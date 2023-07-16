@@ -11,6 +11,7 @@ for path in connections_dir.glob("**/*.yml"):
     print(f"Loading connection from {path}")
     with open(path, mode="r", encoding="utf-8") as f:
         connection = yaml.safe_load(f)
+        connection["file_path"] = str(path)
         connections[connection["id"]] = connection
 
 print(f"Loaded {len(connections)} connections. Checking for inheritance...\n")
