@@ -1,5 +1,5 @@
-{
-    "snowflake_private_key": {
+[
+    {
         "id": "snowflake_private_key",
         "visible": true,
         "method_name": "Private Key",
@@ -128,7 +128,7 @@
             }
         ]
     },
-    "snowflake_username_pass": {
+    {
         "id": "snowflake_username_pass",
         "visible": true,
         "method_name": "Username and Password",
@@ -257,4 +257,4 @@
             }
         ]
     }
-}
+]
