@@ -6,7 +6,6 @@
         "connection_type": "snowflake",
         "connection_name": "Snowflake",
         "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
-        "documentationUrl": "https://airflow.apache.org/docs/apache-airflow-providers-snowflake/stable/connections/snowflake.html",
         "package": "apache-airflow-providers-snowflake",
         "parameters": [
             {
@@ -136,7 +135,6 @@
         "connection_type": "snowflake",
         "connection_name": "Snowflake",
         "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
-        "documentationUrl": "https://airflow.apache.org/docs/apache-airflow-providers-snowflake/stable/connections/snowflake.html",
         "package": "apache-airflow-providers-snowflake",
         "parameters": [
             {
