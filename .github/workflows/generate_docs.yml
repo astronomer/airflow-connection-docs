@@ -11,7 +11,7 @@ jobs:
 
       - name: Generate connections.json
         run: |
-          python3 scripts/generate_connections.py
+          python3 scripts/generate.py
 
       - name: Validate connections.json
         run: |
