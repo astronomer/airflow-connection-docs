@@ -1,7 +1,7 @@
 name: Validate connections.json
 on: [push]
 jobs:
-  validate-connections:
+  validate-generated-json:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
