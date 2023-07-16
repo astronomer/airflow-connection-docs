@@ -1,0 +1,13 @@
+id: snowflake_username_pass
+visible: true
+inherit_from: snowflake_base
+method_name: Username and Password
++parameters:
+  # password
+  - airflow_param_name: password
+    friendly_name: Password
+    type: str
+    required: true
+    secret: true
+    description: The password to use for authenticating against Snowflake.
+    example: my_password
