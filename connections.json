@@ -95,9 +95,7 @@
                 "required": false,
                 "secret": false,
                 "description": "The session parameters to use for the connection.",
-                "example": {
-                    "QUERY_TAG": "airflow"
-                }
+                "example": "{'QUERY_TAG': 'airflow'}"
             },
             {
                 "airflow_param_name": "insecure_mode",
@@ -107,7 +105,7 @@
                 "required": false,
                 "secret": false,
                 "description": "Whether to use insecure mode for the connection.",
-                "example": false
+                "example": "False"
             },
             {
                 "airflow_param_name": "password",
@@ -225,9 +223,7 @@
                 "required": false,
                 "secret": false,
                 "description": "The session parameters to use for the connection.",
-                "example": {
-                    "QUERY_TAG": "airflow"
-                }
+                "example": "{'QUERY_TAG': 'airflow'}"
             },
             {
                 "airflow_param_name": "insecure_mode",
@@ -237,7 +233,7 @@
                 "required": false,
                 "secret": false,
                 "description": "Whether to use insecure mode for the connection.",
-                "example": false
+                "example": "False"
             },
             {
                 "airflow_param_name": "password",

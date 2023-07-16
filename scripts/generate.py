@@ -12,6 +12,12 @@ for path in connections_dir.glob("**/*.yml"):
     with open(path, mode="r", encoding="utf-8") as f:
         connection = yaml.safe_load(f)
         connection["file_path"] = str(path)
+
+        # if there are any parameters with an example value, make sure the example value is a string
+        for parameter in connection.get("parameters", []):
+            if "example" in parameter:
+                parameter["example"] = str(parameter["example"])
+
         connections[connection["id"]] = connection
 
 print(f"Loaded {len(connections)} connections. Checking for inheritance...\n")
