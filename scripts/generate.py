@@ -1,5 +1,7 @@
 "This script generates a single JSON file containing all the docs and metadata for connections."
 from pathlib import Path
+from subprocess import check_output
+
 import json
 import yaml
 
@@ -12,6 +14,12 @@ for path in connections_dir.glob("**/*.yml"):
     with open(path, mode="r", encoding="utf-8") as f:
         connection = yaml.safe_load(f)
         connection["file_path"] = str(path)
+
+        # get the last commit date for the connection
+        commit_date = check_output(
+            f"git log -1 --pretty=format:%ci {path}".split()
+        ).decode()
+        connection["last_commit_date"] = commit_date
 
         # if there are any parameters with an example value, make sure the example value is a string
         for parameter in connection.get("parameters", []):
