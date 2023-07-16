@@ -75,5 +75,4 @@ print("Done removing non-visible connections.\n")
 # finally, we write the connections to a single JSON file
 with open("connections.json", mode="w", encoding="utf-8") as f:
     print("Writing connections to connections.json")
-    connections = list(connections.values())
-    json.dump(connections, f, indent=4)
+    json.dump(list(connections.values()), f, indent=4)

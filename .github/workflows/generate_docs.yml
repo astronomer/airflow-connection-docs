@@ -1,0 +1,19 @@
+name: Validate connections.json
+on: [push]
+jobs:
+  validate-connections:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+
+      - name: Generate connections.json
+        run: |
+          python3 scripts/generate_connections.py
+
+      - name: Validate connections.json
+        run: |
+          git update-index --refresh 
+          git diff-index --quiet HEAD --
