@@ -5,7 +5,7 @@ from subprocess import check_output
 import json
 import yaml
 
-connections = {}
+connections = []
 connections_dir = Path("connections")
 
 # parse all .yml files in the connections directory and store them in `connections`
@@ -26,14 +26,14 @@ for path in connections_dir.glob("**/*.yml"):
             if "example" in parameter:
                 parameter["example"] = str(parameter["example"])
 
-        connections[connection["id"]] = connection
+        connections.append(connection)
 
 print(f"Loaded {len(connections)} connections. Checking for inheritance...\n")
 
-full_connections: dict[str, dict] = {}
+full_connections = []
 
 # then we need to deal with inheritance
-for connection in connections.values():
+for connection in connections:
     new_conn = connection.copy()
 
     if "inherit_from" in new_conn:
@@ -41,7 +41,12 @@ for connection in connections.values():
 
         # if this connection extends another connection, we need to merge the two
         # we do this by copying all the fields from the parent connection into the child connection
-        parent = connections[new_conn["inherit_from"]]
+        parent = [c for c in connections if c["id"] == new_conn["inherit_from"]][0]
+        if not parent:
+            raise Exception(
+                f"Could not find parent connection {new_conn['inherit_from']}"
+            )
+
         for key, value in parent.items():
             # if the key is `+parameters`, we need to merge the parameters. we do this later
             if key == "+parameters":
@@ -56,7 +61,7 @@ for connection in connections.values():
         # with the parameters from the parent connection
         if "+parameters" in new_conn:
             print(f"\tMerging parameters from {new_conn['inherit_from']}")
-            new_params = parent["parameters"]
+            new_params = parent["parameters"].copy()
             for parameter in new_conn["+parameters"]:
                 # if the parameter airflow_param_name is already in the parent connection,
                 # delete it
@@ -95,12 +100,12 @@ for connection in connections.values():
         del new_conn["inherit_from"]
 
     # and finally, we add the connection to the full connections dict
-    full_connections[new_conn["id"]] = new_conn
+    full_connections.append(new_conn)
 
 print("Removing non-visible connections...")
 
 full_visible_connections = []
-for connection in full_connections.values():
+for connection in full_connections:
     if connection.get("visible", True):
         full_visible_connections.append(connection)
 

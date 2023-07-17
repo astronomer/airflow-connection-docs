@@ -238,15 +238,6 @@
                 "example": "False"
             },
             {
-                "airflow_param_name": "private_key_path",
-                "friendly_name": "Private Key Path",
-                "type": "str",
-                "required": true,
-                "secret": false,
-                "description": "The path to the private key file to use for authenticating against Snowflake.",
-                "example": "/path/to/private/key/file"
-            },
-            {
                 "airflow_param_name": "password",
                 "friendly_name": "Password",
                 "type": "str",
