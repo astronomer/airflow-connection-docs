@@ -21,6 +21,10 @@ for path in connections_dir.glob("**/*.yml"):
         ).decode()
         connection["last_commit_date"] = commit_date
 
+        # make sure the guide_path is absolute, right now it's relative to the file path
+        if "guide_path" in connection:
+            connection["guide_path"] = str(path.parent / connection["guide_path"])
+
         # if there are any parameters with an example value, make sure the example value is a string
         for parameter in connection.get("parameters", []):
             if "example" in parameter:

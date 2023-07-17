@@ -133,6 +133,7 @@
         "id": "snowflake_username_pass",
         "visible": true,
         "method_name": "Username and Password",
+        "guide_path": "connections/snowflake/guides/username_pass.md",
         "file_path": "connections/snowflake/username_pass.yml",
         "last_commit_date": "2023-07-16T16:12:41-04:00",
         "connection_type": "snowflake",

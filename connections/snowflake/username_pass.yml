@@ -2,6 +2,7 @@ id: snowflake_username_pass
 visible: true
 inherit_from: snowflake_base
 method_name: Username and Password
+guide_path: ./guides/username_pass.md
 +parameters:
   # password
   - airflow_param_name: password
