@@ -54,24 +54,39 @@ for connection in connections.values():
         # with the parameters from the parent connection
         if "+parameters" in connection:
             print(f"\tMerging parameters from {connection['inherit_from']}")
+            new_params = parent["parameters"]
             for parameter in connection["+parameters"]:
-                # if the parameter is not already in the child connection by the
-                # param's `airflow_param_name` and `in_extra`, we add it
-                if not any(
+                # if the parameter airflow_param_name is already in the parent connection,
+                # delete it
+                if any(
                     [
                         p["airflow_param_name"] == parameter["airflow_param_name"]
                         and p.get("in_extra", False) == parameter.get("in_extra", False)
-                        for p in connection["parameters"]
+                        for p in new_params
                     ]
                 ):
-                    print(
-                        f"\t\tAdding parameter {parameter['airflow_param_name']} to {connection['id']}"
-                    )
-                    connection["parameters"].append(parameter)
+                    new_params = [
+                        p
+                        for p in new_params
+                        if not (
+                            p["airflow_param_name"] == parameter["airflow_param_name"]
+                            and p.get("in_extra", False)
+                            == parameter.get("in_extra", False)
+                        )
+                    ]
+
+                # then add the parameter to the parent connection
+                print(
+                    f"\t\tAdding parameter {parameter['airflow_param_name']} to {connection['inherit_from']}"
+                )
+                new_params.append(parameter)
 
             # then delete the `+parameters` field from the child connection
             print(f"\tRemoving `+parameters` from {connection['id']}")
             del connection["+parameters"]
+
+            # and finally, set the parent connection's parameters to the new parameters
+            connection["parameters"] = new_params
 
         # and then we need to remove the `inherit_from` field from the child connection
         print(f"Removing `inherit_from` from {connection['id']}\n")
