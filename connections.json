@@ -1,260 +1,259 @@
 [
-    {
-        "id": "snowflake_private_key",
-        "visible": true,
-        "method_name": "Private Key",
-        "file_path": "connections/snowflake/private_key.yml",
-        "last_commit_date": "2023-07-16T16:12:41-04:00",
-        "connection_type": "snowflake",
-        "connection_name": "Snowflake",
-        "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
-        "package": "apache-airflow-providers-snowflake",
-        "parameters": [
-            {
-                "airflow_param_name": "login",
-                "friendly_name": "Username",
-                "type": "str",
-                "required": true,
-                "secret": false,
-                "description": "The username to use for authenticating against Snowflake.",
-                "example": "my_username"
-            },
-            {
-                "airflow_param_name": "schema",
-                "friendly_name": "Default schema",
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default schema to use for the connection.",
-                "example": "my_schema"
-            },
-            {
-                "airflow_param_name": "account",
-                "friendly_name": "Account",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the Snowflake account to connect to.",
-                "example": "gp12345"
-            },
-            {
-                "airflow_param_name": "database",
-                "friendly_name": "Database",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default database to use for the connection.",
-                "example": "my_database"
-            },
-            {
-                "airflow_param_name": "region",
-                "friendly_name": "Region",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the Snowflake region to connect to.",
-                "example": "my_region"
-            },
-            {
-                "airflow_param_name": "warehouse",
-                "friendly_name": "Warehouse",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default warehouse to use for the connection.",
-                "example": "my_warehouse"
-            },
-            {
-                "airflow_param_name": "role",
-                "friendly_name": "Role",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default role to use for the connection.",
-                "example": "my_role"
-            },
-            {
-                "airflow_param_name": "authenticator",
-                "friendly_name": "Authenticator",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The authenticator to use for the connection.",
-                "example": "my_authenticator"
-            },
-            {
-                "airflow_param_name": "session_parameters",
-                "friendly_name": "Session parameters",
-                "in_extra": true,
-                "type": "dict",
-                "required": false,
-                "secret": false,
-                "description": "The session parameters to use for the connection.",
-                "example": "{'QUERY_TAG': 'airflow'}"
-            },
-            {
-                "airflow_param_name": "insecure_mode",
-                "friendly_name": "Insecure mode",
-                "in_extra": true,
-                "type": "bool",
-                "required": false,
-                "secret": false,
-                "description": "Whether to use insecure mode for the connection.",
-                "example": "False"
-            },
-            {
-                "airflow_param_name": "password",
-                "friendly_name": "Private Key Passphrase",
-                "type": "str",
-                "required": true,
-                "secret": true,
-                "description": "The passphrase to use for authenticating against Snowflake.",
-                "example": "my_private_key_passphrase"
-            },
-            {
-                "airflow_param_name": "private_key_path",
-                "friendly_name": "Private Key Path",
-                "type": "str",
-                "required": true,
-                "secret": false,
-                "description": "The path to the private key file to use for authenticating against Snowflake.",
-                "example": "/path/to/private/key/file"
-            }
-        ]
-    },
-    {
-        "id": "snowflake_username_pass",
-        "visible": true,
-        "method_name": "Username and Password",
-        "file_path": "connections/snowflake/username_pass.yml",
-        "last_commit_date": "2023-07-16T16:12:41-04:00",
-        "connection_type": "snowflake",
-        "connection_name": "Snowflake",
-        "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
-        "package": "apache-airflow-providers-snowflake",
-        "parameters": [
-            {
-                "airflow_param_name": "login",
-                "friendly_name": "Username",
-                "type": "str",
-                "required": true,
-                "secret": false,
-                "description": "The username to use for authenticating against Snowflake.",
-                "example": "my_username"
-            },
-            {
-                "airflow_param_name": "schema",
-                "friendly_name": "Default schema",
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default schema to use for the connection.",
-                "example": "my_schema"
-            },
-            {
-                "airflow_param_name": "account",
-                "friendly_name": "Account",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the Snowflake account to connect to.",
-                "example": "gp12345"
-            },
-            {
-                "airflow_param_name": "database",
-                "friendly_name": "Database",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default database to use for the connection.",
-                "example": "my_database"
-            },
-            {
-                "airflow_param_name": "region",
-                "friendly_name": "Region",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the Snowflake region to connect to.",
-                "example": "my_region"
-            },
-            {
-                "airflow_param_name": "warehouse",
-                "friendly_name": "Warehouse",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default warehouse to use for the connection.",
-                "example": "my_warehouse"
-            },
-            {
-                "airflow_param_name": "role",
-                "friendly_name": "Role",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The name of the default role to use for the connection.",
-                "example": "my_role"
-            },
-            {
-                "airflow_param_name": "authenticator",
-                "friendly_name": "Authenticator",
-                "in_extra": true,
-                "type": "str",
-                "required": false,
-                "secret": false,
-                "description": "The authenticator to use for the connection.",
-                "example": "my_authenticator"
-            },
-            {
-                "airflow_param_name": "session_parameters",
-                "friendly_name": "Session parameters",
-                "in_extra": true,
-                "type": "dict",
-                "required": false,
-                "secret": false,
-                "description": "The session parameters to use for the connection.",
-                "example": "{'QUERY_TAG': 'airflow'}"
-            },
-            {
-                "airflow_param_name": "insecure_mode",
-                "friendly_name": "Insecure mode",
-                "in_extra": true,
-                "type": "bool",
-                "required": false,
-                "secret": false,
-                "description": "Whether to use insecure mode for the connection.",
-                "example": "False"
-            },
-            {
-                "airflow_param_name": "private_key_path",
-                "friendly_name": "Private Key Path",
-                "type": "str",
-                "required": true,
-                "secret": false,
-                "description": "The path to the private key file to use for authenticating against Snowflake.",
-                "example": "/path/to/private/key/file"
-            },
-            {
-                "airflow_param_name": "password",
-                "friendly_name": "Password",
-                "type": "str",
-                "required": true,
-                "secret": true,
-                "description": "The password to use for authenticating against Snowflake.",
-                "example": "my_password"
-            }
-        ]
-    }
+  {
+    "id": "snowflake_private_key",
+    "visible": true,
+    "method_name": "Private Key",
+    "file_path": "connections/snowflake/private_key.yml",
+    "last_commit_date": "2023-07-16T16:12:41-04:00",
+    "connection_type": "snowflake",
+    "connection_name": "Snowflake",
+    "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
+    "package": "apache-airflow-providers-snowflake",
+    "parameters": [
+      {
+        "airflow_param_name": "login",
+        "friendly_name": "Username",
+        "type": "str",
+        "required": true,
+        "secret": false,
+        "description": "The username to use for authenticating against Snowflake."
+      },
+      {
+        "airflow_param_name": "schema",
+        "friendly_name": "Default schema",
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default schema to use for the connection.",
+        "example": "my_schema"
+      },
+      {
+        "airflow_param_name": "account",
+        "friendly_name": "Account",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the Snowflake account to connect to.",
+        "example": "gp12345"
+      },
+      {
+        "airflow_param_name": "database",
+        "friendly_name": "Database",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default database to use for the connection.",
+        "example": "my_database"
+      },
+      {
+        "airflow_param_name": "region",
+        "friendly_name": "Region",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the Snowflake region to connect to.",
+        "example": "my_region"
+      },
+      {
+        "airflow_param_name": "warehouse",
+        "friendly_name": "Warehouse",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default warehouse to use for the connection.",
+        "example": "my_warehouse"
+      },
+      {
+        "airflow_param_name": "role",
+        "friendly_name": "Role",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default role to use for the connection.",
+        "example": "my_role"
+      },
+      {
+        "airflow_param_name": "authenticator",
+        "friendly_name": "Authenticator",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The authenticator to use for the connection.",
+        "example": "my_authenticator"
+      },
+      {
+        "airflow_param_name": "session_parameters",
+        "friendly_name": "Session parameters",
+        "in_extra": true,
+        "type": "dict",
+        "required": false,
+        "secret": false,
+        "description": "The session parameters to use for the connection.",
+        "example": "{'QUERY_TAG': 'airflow'}"
+      },
+      {
+        "airflow_param_name": "insecure_mode",
+        "friendly_name": "Insecure mode",
+        "in_extra": true,
+        "type": "bool",
+        "required": false,
+        "secret": false,
+        "description": "Whether to use insecure mode for the connection.",
+        "example": "False"
+      },
+      {
+        "airflow_param_name": "password",
+        "friendly_name": "Private Key Passphrase",
+        "type": "str",
+        "required": true,
+        "secret": true,
+        "description": "The passphrase to use for authenticating against Snowflake.",
+        "example": "my_private_key_passphrase"
+      },
+      {
+        "airflow_param_name": "private_key_path",
+        "friendly_name": "Private Key Path",
+        "type": "str",
+        "required": true,
+        "secret": false,
+        "description": "The path to the private key file to use for authenticating against Snowflake.",
+        "example": "/path/to/private/key/file"
+      }
+    ]
+  },
+  {
+    "id": "snowflake_username_pass",
+    "visible": true,
+    "method_name": "Username and Password",
+    "file_path": "connections/snowflake/username_pass.yml",
+    "last_commit_date": "2023-07-16T16:12:41-04:00",
+    "connection_type": "snowflake",
+    "connection_name": "Snowflake",
+    "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
+    "package": "apache-airflow-providers-snowflake",
+    "parameters": [
+      {
+        "airflow_param_name": "login",
+        "friendly_name": "Username",
+        "type": "str",
+        "required": true,
+        "secret": false,
+        "description": "The username to use for authenticating against Snowflake.",
+        "example": "my_username"
+      },
+      {
+        "airflow_param_name": "schema",
+        "friendly_name": "Default schema",
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default schema to use for the connection.",
+        "example": "my_schema"
+      },
+      {
+        "airflow_param_name": "account",
+        "friendly_name": "Account",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the Snowflake account to connect to.",
+        "example": "gp12345"
+      },
+      {
+        "airflow_param_name": "database",
+        "friendly_name": "Database",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default database to use for the connection.",
+        "example": "my_database"
+      },
+      {
+        "airflow_param_name": "region",
+        "friendly_name": "Region",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the Snowflake region to connect to.",
+        "example": "my_region"
+      },
+      {
+        "airflow_param_name": "warehouse",
+        "friendly_name": "Warehouse",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default warehouse to use for the connection.",
+        "example": "my_warehouse"
+      },
+      {
+        "airflow_param_name": "role",
+        "friendly_name": "Role",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The name of the default role to use for the connection.",
+        "example": "my_role"
+      },
+      {
+        "airflow_param_name": "authenticator",
+        "friendly_name": "Authenticator",
+        "in_extra": true,
+        "type": "str",
+        "required": false,
+        "secret": false,
+        "description": "The authenticator to use for the connection.",
+        "example": "my_authenticator"
+      },
+      {
+        "airflow_param_name": "session_parameters",
+        "friendly_name": "Session parameters",
+        "in_extra": true,
+        "type": "dict",
+        "required": false,
+        "secret": false,
+        "description": "The session parameters to use for the connection.",
+        "example": "{'QUERY_TAG': 'airflow'}"
+      },
+      {
+        "airflow_param_name": "insecure_mode",
+        "friendly_name": "Insecure mode",
+        "in_extra": true,
+        "type": "bool",
+        "required": false,
+        "secret": false,
+        "description": "Whether to use insecure mode for the connection.",
+        "example": "False"
+      },
+      {
+        "airflow_param_name": "private_key_path",
+        "friendly_name": "Private Key Path",
+        "type": "str",
+        "required": true,
+        "secret": false,
+        "description": "The path to the private key file to use for authenticating against Snowflake.",
+        "example": "/path/to/private/key/file"
+      },
+      {
+        "airflow_param_name": "password",
+        "friendly_name": "Password",
+        "type": "str",
+        "required": true,
+        "secret": true,
+        "description": "The password to use for authenticating against Snowflake.",
+        "example": "my_password"
+      }
+    ]
+  }
 ]
