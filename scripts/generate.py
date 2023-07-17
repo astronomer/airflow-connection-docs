@@ -30,32 +30,34 @@ for path in connections_dir.glob("**/*.yml"):
 
 print(f"Loaded {len(connections)} connections. Checking for inheritance...\n")
 
+full_connections: dict[str, dict] = {}
+
 # then we need to deal with inheritance
 for connection in connections.values():
-    if "inherit_from" in connection:
-        print(
-            f"Connection {connection['id']} inherits from {connection['inherit_from']}"
-        )
+    new_conn = connection.copy()
+
+    if "inherit_from" in new_conn:
+        print(f"Connection {new_conn['id']} inherits from {new_conn['inherit_from']}")
 
         # if this connection extends another connection, we need to merge the two
         # we do this by copying all the fields from the parent connection into the child connection
-        parent = connections[connection["inherit_from"]]
+        parent = connections[new_conn["inherit_from"]]
         for key, value in parent.items():
             # if the key is `+parameters`, we need to merge the parameters. we do this later
             if key == "+parameters":
                 continue
 
             # otherwise, we just copy the value from the parent connection
-            if key not in connection:
-                print(f"\tAdding {key} to {connection['id']}")
-                connection[key] = value
+            if key not in new_conn:
+                print(f"\tAdding {key} to {new_conn['id']}")
+                new_conn[key] = value
 
         # if there's a `+parameters` field in the child connection, we need to merge it
         # with the parameters from the parent connection
-        if "+parameters" in connection:
-            print(f"\tMerging parameters from {connection['inherit_from']}")
+        if "+parameters" in new_conn:
+            print(f"\tMerging parameters from {new_conn['inherit_from']}")
             new_params = parent["parameters"]
-            for parameter in connection["+parameters"]:
+            for parameter in new_conn["+parameters"]:
                 # if the parameter airflow_param_name is already in the parent connection,
                 # delete it
                 if any(
@@ -77,32 +79,34 @@ for connection in connections.values():
 
                 # then add the parameter to the parent connection
                 print(
-                    f"\t\tAdding parameter {parameter['airflow_param_name']} to {connection['inherit_from']}"
+                    f"\t\tAdding parameter {parameter['airflow_param_name']} to {new_conn['inherit_from']}"
                 )
                 new_params.append(parameter)
 
             # then delete the `+parameters` field from the child connection
-            print(f"\tRemoving `+parameters` from {connection['id']}")
-            del connection["+parameters"]
+            print(f"\tRemoving `+parameters` from {new_conn['id']}")
+            del new_conn["+parameters"]
 
             # and finally, set the parent connection's parameters to the new parameters
-            connection["parameters"] = new_params
+            new_conn["parameters"] = new_params
 
         # and then we need to remove the `inherit_from` field from the child connection
-        print(f"Removing `inherit_from` from {connection['id']}\n")
-        del connection["inherit_from"]
+        print(f"Removing `inherit_from` from {new_conn['id']}\n")
+        del new_conn["inherit_from"]
+
+    # and finally, we add the connection to the full connections dict
+    full_connections[new_conn["id"]] = new_conn
 
 print("Removing non-visible connections...")
 
-# remove any non-visible connections
-for connection in list(connections.values()):
-    if not connection.get("visible", True):
-        print(f"\tRemoving non-visible connection {connection['id']}")
-        del connections[connection["id"]]
+full_visible_connections = []
+for connection in full_connections.values():
+    if connection.get("visible", True):
+        full_visible_connections.append(connection)
 
 print("Done removing non-visible connections.\n")
 
 # finally, we write the connections to a single JSON file
 with open("connections.json", mode="w", encoding="utf-8") as f:
     print("Writing connections to connections.json")
-    json.dump(list(connections.values()), f, indent=4)
+    json.dump(full_visible_connections, f, indent=4)
