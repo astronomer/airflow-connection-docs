@@ -122,6 +122,7 @@
                 "friendly_name": "Private Key Path",
                 "type": "str",
                 "required": true,
+                "in_extra": true,
                 "secret": false,
                 "description": "The path to the private key file to use for authenticating against Snowflake.",
                 "example": "/path/to/private/key/file"
