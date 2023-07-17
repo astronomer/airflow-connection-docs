@@ -22,4 +22,4 @@ jobs:
       - name: Validate connections.json
         run: |
           git update-index --refresh 
-          git diff-index --quiet HEAD --
+          git diff-index HEAD --
