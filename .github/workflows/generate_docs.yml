@@ -21,7 +21,5 @@ jobs:
 
       - name: Validate connections.json
         run: |
-          git update-index --refresh 
-
           # if there are any files modified, print the diffs then exit with an error
           git diff --exit-code --name-only && echo "No files modified" || (git diff && exit 1)
