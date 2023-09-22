@@ -5,6 +5,7 @@ from caseconverter import camelcase
 
 import json
 import yaml
+import sys
 
 
 def to_camel(d):
@@ -16,8 +17,16 @@ def to_camel(d):
     return {camelcase(a): to_camel(b) if isinstance(b, (dict, list)) else b for a, b in d.items()}
 
 
+# first, we need to load all the connections from the relevant connections directory
+if len(sys.argv) > 1: 
+    connections_dir_path = sys.argv[1]
+    print(f"Using connections directory: {connections_dir_path}")
+else:
+    print("No parameter received, defaulting to connections/dev")
+    connections_dir_path = "connections/dev"
+
 connections = []
-connections_dir = Path("connections")
+connections_dir = Path(connections_dir_path)
 
 # parse all .yml files in the connections directory and store them in `connections`
 for path in connections_dir.glob("**/*.yml"):
