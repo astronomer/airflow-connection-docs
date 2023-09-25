@@ -2,17 +2,17 @@
     {
         "id": "snowflake_private_key",
         "visible": true,
-        "method_name": "Private Key",
-        "file_path": "connections/snowflake/private_key.yml",
-        "last_commit_date": "2023-07-16T23:30:36-04:00",
-        "connection_type": "snowflake",
-        "connection_name": "Snowflake",
+        "methodName": "Private Key",
+        "filePath": "connections/dev/snowflake/private_key.yml",
+        "lastCommitDate": "2023-09-22T14:45:31-04:00",
+        "connectionType": "snowflake",
+        "connectionName": "Snowflake",
         "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
         "package": "apache-airflow-providers-snowflake",
         "parameters": [
             {
-                "airflow_param_name": "login",
-                "friendly_name": "Username",
+                "airflowParamName": "login",
+                "friendlyName": "Username",
                 "type": "str",
                 "required": true,
                 "secret": false,
@@ -20,8 +20,8 @@
                 "example": "my_username"
             },
             {
-                "airflow_param_name": "schema",
-                "friendly_name": "Default schema",
+                "airflowParamName": "schema",
+                "friendlyName": "Default schema",
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -29,9 +29,9 @@
                 "example": "my_schema"
             },
             {
-                "airflow_param_name": "account",
-                "friendly_name": "Account",
-                "in_extra": true,
+                "airflowParamName": "account",
+                "friendlyName": "Account",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -39,9 +39,9 @@
                 "example": "gp12345"
             },
             {
-                "airflow_param_name": "database",
-                "friendly_name": "Database",
-                "in_extra": true,
+                "airflowParamName": "database",
+                "friendlyName": "Database",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -49,9 +49,9 @@
                 "example": "my_database"
             },
             {
-                "airflow_param_name": "region",
-                "friendly_name": "Region",
-                "in_extra": true,
+                "airflowParamName": "region",
+                "friendlyName": "Region",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -59,9 +59,9 @@
                 "example": "my_region"
             },
             {
-                "airflow_param_name": "warehouse",
-                "friendly_name": "Warehouse",
-                "in_extra": true,
+                "airflowParamName": "warehouse",
+                "friendlyName": "Warehouse",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -69,9 +69,9 @@
                 "example": "my_warehouse"
             },
             {
-                "airflow_param_name": "role",
-                "friendly_name": "Role",
-                "in_extra": true,
+                "airflowParamName": "role",
+                "friendlyName": "Role",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -79,9 +79,9 @@
                 "example": "my_role"
             },
             {
-                "airflow_param_name": "authenticator",
-                "friendly_name": "Authenticator",
-                "in_extra": true,
+                "airflowParamName": "authenticator",
+                "friendlyName": "Authenticator",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -89,9 +89,9 @@
                 "example": "my_authenticator"
             },
             {
-                "airflow_param_name": "session_parameters",
-                "friendly_name": "Session parameters",
-                "in_extra": true,
+                "airflowParamName": "session_parameters",
+                "friendlyName": "Session parameters",
+                "inExtra": true,
                 "type": "dict",
                 "required": false,
                 "secret": false,
@@ -99,9 +99,9 @@
                 "example": "{'QUERY_TAG': 'airflow'}"
             },
             {
-                "airflow_param_name": "insecure_mode",
-                "friendly_name": "Insecure mode",
-                "in_extra": true,
+                "airflowParamName": "insecure_mode",
+                "friendlyName": "Insecure mode",
+                "inExtra": true,
                 "type": "bool",
                 "required": false,
                 "secret": false,
@@ -109,8 +109,8 @@
                 "example": "False"
             },
             {
-                "airflow_param_name": "password",
-                "friendly_name": "Private Key Passphrase",
+                "airflowParamName": "password",
+                "friendlyName": "Private Key Passphrase",
                 "type": "str",
                 "required": true,
                 "secret": true,
@@ -118,11 +118,11 @@
                 "example": "my_private_key_passphrase"
             },
             {
-                "airflow_param_name": "private_key_path",
-                "friendly_name": "Private Key Path",
+                "airflowParamName": "private_key_path",
+                "friendlyName": "Private Key Path",
                 "type": "str",
                 "required": true,
-                "in_extra": true,
+                "inExtra": true,
                 "secret": false,
                 "description": "The path to the private key file to use for authenticating against Snowflake.",
                 "example": "/path/to/private/key/file"
@@ -132,18 +132,18 @@
     {
         "id": "snowflake_username_pass",
         "visible": true,
-        "method_name": "Username and Password",
-        "guide_path": "connections/snowflake/guides/username_pass.md",
-        "file_path": "connections/snowflake/username_pass.yml",
-        "last_commit_date": "2023-07-17T15:52:18-04:00",
-        "connection_type": "snowflake",
-        "connection_name": "Snowflake",
+        "methodName": "Username and Password",
+        "guidePath": "connections/dev/snowflake/guides/username_pass.md",
+        "filePath": "connections/dev/snowflake/username_pass.yml",
+        "lastCommitDate": "2023-09-22T14:45:31-04:00",
+        "connectionType": "snowflake",
+        "connectionName": "Snowflake",
         "description": "Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.",
         "package": "apache-airflow-providers-snowflake",
         "parameters": [
             {
-                "airflow_param_name": "login",
-                "friendly_name": "Username",
+                "airflowParamName": "login",
+                "friendlyName": "Username",
                 "type": "str",
                 "required": true,
                 "secret": false,
@@ -151,8 +151,8 @@
                 "example": "my_username"
             },
             {
-                "airflow_param_name": "schema",
-                "friendly_name": "Default schema",
+                "airflowParamName": "schema",
+                "friendlyName": "Default schema",
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -160,9 +160,9 @@
                 "example": "my_schema"
             },
             {
-                "airflow_param_name": "account",
-                "friendly_name": "Account",
-                "in_extra": true,
+                "airflowParamName": "account",
+                "friendlyName": "Account",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -170,9 +170,9 @@
                 "example": "gp12345"
             },
             {
-                "airflow_param_name": "database",
-                "friendly_name": "Database",
-                "in_extra": true,
+                "airflowParamName": "database",
+                "friendlyName": "Database",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -180,9 +180,9 @@
                 "example": "my_database"
             },
             {
-                "airflow_param_name": "region",
-                "friendly_name": "Region",
-                "in_extra": true,
+                "airflowParamName": "region",
+                "friendlyName": "Region",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -190,9 +190,9 @@
                 "example": "my_region"
             },
             {
-                "airflow_param_name": "warehouse",
-                "friendly_name": "Warehouse",
-                "in_extra": true,
+                "airflowParamName": "warehouse",
+                "friendlyName": "Warehouse",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -200,9 +200,9 @@
                 "example": "my_warehouse"
             },
             {
-                "airflow_param_name": "role",
-                "friendly_name": "Role",
-                "in_extra": true,
+                "airflowParamName": "role",
+                "friendlyName": "Role",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -210,9 +210,9 @@
                 "example": "my_role"
             },
             {
-                "airflow_param_name": "authenticator",
-                "friendly_name": "Authenticator",
-                "in_extra": true,
+                "airflowParamName": "authenticator",
+                "friendlyName": "Authenticator",
+                "inExtra": true,
                 "type": "str",
                 "required": false,
                 "secret": false,
@@ -220,9 +220,9 @@
                 "example": "my_authenticator"
             },
             {
-                "airflow_param_name": "session_parameters",
-                "friendly_name": "Session parameters",
-                "in_extra": true,
+                "airflowParamName": "session_parameters",
+                "friendlyName": "Session parameters",
+                "inExtra": true,
                 "type": "dict",
                 "required": false,
                 "secret": false,
@@ -230,9 +230,9 @@
                 "example": "{'QUERY_TAG': 'airflow'}"
             },
             {
-                "airflow_param_name": "insecure_mode",
-                "friendly_name": "Insecure mode",
-                "in_extra": true,
+                "airflowParamName": "insecure_mode",
+                "friendlyName": "Insecure mode",
+                "inExtra": true,
                 "type": "bool",
                 "required": false,
                 "secret": false,
@@ -240,8 +240,8 @@
                 "example": "False"
             },
             {
-                "airflow_param_name": "password",
-                "friendly_name": "Password",
+                "airflowParamName": "password",
+                "friendlyName": "Password",
                 "type": "str",
                 "required": true,
                 "secret": true,

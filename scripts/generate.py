@@ -1,12 +1,32 @@
 "This script generates a single JSON file containing all the docs and metadata for connections."
 from pathlib import Path
 from subprocess import check_output
+from caseconverter import camelcase
 
 import json
 import yaml
+import sys
+
+
+def to_camel(d):
+    """
+        Recursively transform the keys arbitrary dict or list to camelCase.
+    """
+    if isinstance(d, list):
+        return [to_camel(i) if isinstance(i, (dict, list)) else i for i in d]
+    return {camelcase(a): to_camel(b) if isinstance(b, (dict, list)) else b for a, b in d.items()}
+
+
+# first, we need to load all the connections from the relevant connections directory
+if len(sys.argv) > 1: 
+    connections_dir_path = sys.argv[1]
+    print(f"Using connections directory: {connections_dir_path}")
+else:
+    print("No parameter received, defaulting to connections/dev")
+    connections_dir_path = "connections/dev"
 
 connections = []
-connections_dir = Path("connections")
+connections_dir = Path(connections_dir_path)
 
 # parse all .yml files in the connections directory and store them in `connections`
 for path in connections_dir.glob("**/*.yml"):
@@ -118,4 +138,5 @@ print("Done removing non-visible connections.\n")
 # finally, we write the connections to a single JSON file
 with open("connections.json", mode="w", encoding="utf-8") as f:
     print("Writing connections to connections.json")
-    json.dump(full_visible_connections, f, indent=4)
+    # Transform to camel case for a request object
+    json.dump(to_camel(full_visible_connections), f, indent=4)
