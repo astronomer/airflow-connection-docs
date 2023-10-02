@@ -41,7 +41,7 @@ for path in connections_dir.glob("**/*.yml"):
         commit_date = check_output(
             f"git log -1 --pretty=format:%cI {path}".split()
         ).decode()
-        connection["last_commit_date"] = commit_date
+        connection["last_commit_at"] = commit_date
 
         # make sure the guide_path is absolute, right now it's relative to the file path
         if "guide_path" in connection:
