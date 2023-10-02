@@ -25,9 +25,10 @@ jobs:
 
       - name: Dry-Run connections-dev.json
         run: |
-          CONNECTIONS_DATA=$(<dev-connection-types-request-body.json)
-          curl -X POST \
-              -H "Content-Type: application/json" \
-              -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" \
-              -d @dev-connection-types-request-body.json \
-              https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true \
+          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -d @dev-connection-types-request-body.json https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true)
+          EXPECTED_BODY = "All connections are valid"
+
+          if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then
+            echo "Received error: $RESPONSE_BODY"
+            exit 1
+          fi
