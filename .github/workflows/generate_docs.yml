@@ -26,7 +26,7 @@ jobs:
       - name: Dry-Run connections-dev.json
         run: |
           RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -d @dev-connection-types-request-body.json https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true)
-          EXPECTED_BODY = "All connections are valid"
+          EXPECTED_BODY="All connections are valid"
 
           if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then
             echo "Received error: $RESPONSE_BODY"
