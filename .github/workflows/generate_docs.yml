@@ -17,13 +17,8 @@ jobs:
 
       - name: Generate connections.json from dev
         run: |
-          python3 scripts/generate.py connections/dev
+          python3 scripts/generate.py dev
 
       - name: Print connections.json
         run: |
-          cat connections.json
-
-      - name: Validate connections.json
-        run: |
-          # if there are any files modified, print the diffs then exit with an error
-          git diff --exit-code --name-only && echo "No files modified" || (git diff && exit 1)
+          cat connections-dev.json

@@ -17,16 +17,16 @@ def to_camel(d):
     return {camelcase(a): to_camel(b) if isinstance(b, (dict, list)) else b for a, b in d.items()}
 
 
-# first, we need to load all the connections from the relevant connections directory
+# first, we need to load all the connections from the relevant environment
 if len(sys.argv) > 1: 
-    connections_dir_path = sys.argv[1]
-    print(f"Using connections directory: {connections_dir_path}")
+    environment = sys.argv[1]  # Generally dev, stage, or prod
+    print(f"Using connections directory: {environment}")
 else:
-    print("No parameter received, defaulting to connections/dev")
-    connections_dir_path = "connections/dev"
+    print("No parameter received, defaulting to dev")
+    environment = "dev"
 
 connections = []
-connections_dir = Path(connections_dir_path)
+connections_dir = Path(f"connections/{environment}")
 
 # parse all .yml files in the connections directory and store them in `connections`
 for path in connections_dir.glob("**/*.yml"):
@@ -136,7 +136,7 @@ for connection in full_connections:
 print("Done removing non-visible connections.\n")
 
 # finally, we write the connections to a single JSON file
-with open("connections.json", mode="w", encoding="utf-8") as f:
-    print("Writing connections to connections.json")
+with open(f"connections-{environment}.json", mode="w", encoding="utf-8") as f:
+    print(f"Writing connections to connections-{environment}.json")
     # Transform to camel case for a request object
     json.dump(to_camel(full_visible_connections), f, indent=4)
