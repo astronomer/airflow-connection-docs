@@ -25,7 +25,7 @@ jobs:
 
       - name: Dry-Run connections-dev.json
         run: |
-          CONNECTIONS_DATA=$(<connections-dev.json)
+          CONNECTIONS_DATA=$(<dev-connection-types-request-body.json)
           curl -X POST \
               -H "Content-Type: application/json" \
               -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" \
