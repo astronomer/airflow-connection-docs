@@ -1,5 +1,5 @@
-id: snowflake_base
-connection_type: snowflake
+id: bad
+connection_type: badcommit
 visible: false
 connection_name: Snowflake
 description: Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.
