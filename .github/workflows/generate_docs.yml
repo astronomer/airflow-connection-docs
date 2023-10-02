@@ -15,13 +15,13 @@ jobs:
 
       - run: pip install -r scripts/requirements.txt
 
-      - name: Generate connections.json from dev
+      - name: Generate connection types from dev
         run: |
-          python3 scripts/generate.py dev
+          python3 scripts/generate.py dev ${{ github.ref }}
 
-      - name: Print connections.json
+      - name: Print connection types
         run: |
-          cat connections-dev.json
+          cat dev-connection-types-request-body.json
 
       - name: Dry-Run connections-dev.json
         run: |
@@ -29,6 +29,5 @@ jobs:
           curl -X POST \
               -H "Content-Type: application/json" \
               -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" \
-              -d '{"ref": "somethingsomething", "connectionTypes": $CONNECTIONS_DATA}' \
+              -d @dev-connection-types-request-body.json \
               https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true \
-              --trace-ascii -

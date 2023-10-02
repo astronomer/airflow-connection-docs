@@ -18,12 +18,14 @@ def to_camel(d):
 
 
 # first, we need to load all the connections from the relevant environment
-if len(sys.argv) > 1: 
+if len(sys.argv) > 2: 
     environment = sys.argv[1]  # Generally dev, stage, or prod
+    ref = sys.argv[2]  # Some github ref
     print(f"Using connections directory: {environment}")
 else:
-    print("No parameter received, defaulting to dev")
+    print("No parameter received, defaulting to dev environment and test ref")
     environment = "dev"
+    ref = "test"
 
 connections = []
 connections_dir = Path(f"connections/{environment}")
@@ -135,8 +137,15 @@ for connection in full_connections:
 
 print("Done removing non-visible connections.\n")
 
+request_body = {
+    "ref": ref,
+    "connectionTypes": full_visible_connections,
+}
+
+target_file = f"{environment}-connection-types-request-body.json"
+
 # finally, we write the connections to a single JSON file
-with open(f"connections-{environment}.json", mode="w", encoding="utf-8") as f:
-    print(f"Writing connections to connections-{environment}.json")
+with open(target_file, mode="w", encoding="utf-8") as f:
+    print(f"Writing connections request body to {target_file}")
     # Transform to camel case for a request object
-    json.dump(to_camel(full_visible_connections), f, indent=4)
+    json.dump(to_camel(request_body), f, indent=4)
