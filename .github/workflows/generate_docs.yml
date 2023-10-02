@@ -22,3 +22,11 @@ jobs:
       - name: Print connections.json
         run: |
           cat connections-dev.json
+
+      - name: Dry-Run connections-dev.json
+        run: |
+          curl -X POST \
+              -H "Content-Type: application/json" \
+              -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" \
+              -d @connections-dev.json \
+              https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true
