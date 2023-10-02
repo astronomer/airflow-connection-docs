@@ -26,8 +26,8 @@ jobs:
       - name: Dry-Run connections-dev.json
         run: |
           CONNECTIONS_DATA=$(<connections-dev.json)
-          curl -X POST \
+          curl -v -X POST \
               -H "Content-Type: application/json" \
               -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" \
-              -d {ref: "somethingsomething", connectionTypes: "$CONNECTIONS_DATA"} \
+              -d '{ref: "somethingsomething", connectionTypes: $CONNECTIONS_DATA}'' \
               https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true
