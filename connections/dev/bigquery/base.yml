@@ -3,7 +3,7 @@ connection_type: gcpbigquery
 visible: true
 connection_name: BigQuery
 description: Configure a connection to a BigQuery database.
-package: apache-airflow-providers-gcpbigquery
+package: apache-airflow-providers-google
 parameters:
   - airflow_param_name: extra__google_cloud_platform__keyfile_dict
     friendly_name: Keyfile JSON

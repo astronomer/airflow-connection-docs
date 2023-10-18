@@ -3,7 +3,7 @@ connection_type: fivetran
 visible: true
 connection_name: Fivetran
 description: Configure a connection to a fivetran database.
-package: apache-airflow-providers-fivetran
+package: airflow-provider-fivetran-async
 parameters:
   - airflow_param_name: login
     friendly_name: Fivetran API Key

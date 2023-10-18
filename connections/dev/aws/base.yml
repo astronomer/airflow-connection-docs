@@ -3,7 +3,7 @@ connection_type: aws
 visible: true
 connection_name: AWS
 description: Configure a connection to AWS.
-package: apache-airflow-providers-aws
+package: apache-airflow-providers-amazon
 parameters:
   - airflow_param_name: aws_access_key_id
     friendly_name: Access Key ID

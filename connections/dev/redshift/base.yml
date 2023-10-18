@@ -3,7 +3,7 @@ connection_type: redshift
 visible: true
 connection_name: Redshift
 description: Configure a connection to a Redshift database.
-package: apache-airflow-providers-redshift
+package: apache-airflow-providers-amazon
 parameters:
   - airflow_param_name: description
     friendly_name: Description
