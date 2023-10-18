@@ -17,7 +17,7 @@ jobs:
 
       - name: Generate connection types from dev
         run: |
-          python3 scripts/generate.py dev ${{ github.ref }}
+          python3 scripts/generate.py dev ${{ github.sha }}
 
       - name: Print connection types
         run: |
