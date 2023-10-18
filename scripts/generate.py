@@ -10,22 +10,25 @@ import sys
 
 def to_camel(d):
     """
-        Recursively transform the keys arbitrary dict or list to camelCase.
+    Recursively transform the keys arbitrary dict or list to camelCase.
     """
     if isinstance(d, list):
         return [to_camel(i) if isinstance(i, (dict, list)) else i for i in d]
-    return {camelcase(a): to_camel(b) if isinstance(b, (dict, list)) else b for a, b in d.items()}
+    return {
+        camelcase(a): to_camel(b) if isinstance(b, (dict, list)) else b
+        for a, b in d.items()
+    }
 
 
 # first, we need to load all the connections from the relevant environment
-if len(sys.argv) > 2: 
+if len(sys.argv) > 2:
     environment = sys.argv[1]  # Generally dev, stage, or prod
-    ref = sys.argv[2]  # Some github ref
+    sha = sys.argv[2]  # Some github sha
     print(f"Using connections directory: {environment}")
 else:
-    print("No parameter received, defaulting to dev environment and test ref")
+    print("No parameter received, defaulting to dev environment and test sha")
     environment = "dev"
-    ref = "test"
+    sha = "test"
 
 connections = []
 connections_dir = Path(f"connections/{environment}")
@@ -138,7 +141,7 @@ for connection in full_connections:
 print("Done removing non-visible connections.\n")
 
 request_body = {
-    "ref": ref,
+    "ref": sha,  # Misnamed in API, this is actually the commit sha
     "connectionTypes": full_visible_connections,
 }
 

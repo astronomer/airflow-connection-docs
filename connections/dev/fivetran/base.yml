@@ -1,0 +1,21 @@
+id: fivetran_base
+connection_type: fivetran
+visible: true
+connection_name: Fivetran
+description: Configure a connection to a fivetran database.
+package: airflow-provider-fivetran-async
+parameters:
+  - airflow_param_name: login
+    friendly_name: Fivetran API Key
+    description: Enter your Fivetran API key
+    example: fivetran_api_key
+    type: str
+    required: true
+    secret: false
+  - airflow_param_name: password
+    friendly_name: Fivetran API Secret
+    description: Enter your Fivetran API secret
+    example: fivetran_api_secret
+    type: str
+    required: true
+    secret: true
