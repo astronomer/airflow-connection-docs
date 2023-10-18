@@ -1,0 +1,89 @@
+id: redshift_base
+connection_type: redshift
+visible: true
+connection_name: Redshift
+description: Configure a connection to a Redshift database.
+package: apache-airflow-providers-redshift
+parameters:
+  - airflow_param_name: description
+    friendly_name: Description
+    description: ''
+    example: My connection
+    type: str
+    required: false
+    secret: false
+  - airflow_param_name: host
+    friendly_name: Host
+    description: The hostname or IP address of the database server
+    example: localhost
+    type: str
+    required: true
+    secret: false
+  - airflow_param_name: port
+    friendly_name: Port
+    description: The port number of the database server
+    example: '5439'
+    type: str
+    required: true
+    secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: The username to connect to the database server
+    example: user
+    type: str
+    required: true
+    secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: The password to connect to the database server
+    example: pass
+    type: str
+    required: true
+    secret: true
+  - airflow_param_name: schema
+    friendly_name: Schema
+    description: The schema to connect to the database server
+    example: public
+    type: str
+    required: true
+    secret: false
+  - airflow_param_name: access_key_id
+    friendly_name: Access Key ID
+    description: AWS Access Key ID
+    example: AKIAIOSFODNN7EXAMPLE
+    type: str
+    in_extra: true
+    required: false
+    secret: false
+  - airflow_param_name: secret_access_key
+    friendly_name: Secret Access Key
+    description: AWS Secret Access Key
+    example: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    type: str
+    in_extra: true
+    required: false
+    secret: true
+  - airflow_param_name: cluster_identifier
+    friendly_name: Cluster Identifier
+    description: The Redshift cluster identifier
+    example: my_cluster
+    type: str
+    in_extra: true
+    required: true
+    secret: false
+  - airflow_param_name: session_token
+    friendly_name: Session Token
+    description: AWS Session Token
+    example: AQoDYXdzEJr...
+    type: str
+    in_extra: true
+    required: false
+    secret: true
+  - airflow_param_name: region
+    friendly_name: Region
+    description: AWS Region
+    example: us-east-1
+    type: str
+    in_extra: true
+    required: false
+    secret: false
