@@ -10,12 +10,12 @@ parameters:
     description: Enter your Fivetran API key
     example: fivetran_api_key
     type: str
-    required: true
-    secret: false
+    is_required: true
+    is_secret: false
   - airflow_param_name: password
     friendly_name: Fivetran API Secret
     description: Enter your Fivetran API secret
     example: fivetran_api_secret
     type: str
-    required: true
-    secret: true
+    is_required: true
+    is_secret: true

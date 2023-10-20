@@ -10,25 +10,25 @@ parameters:
     description: Contents of a service account key file (JSON format)
     example: '{ ... }'
     type: str
-    in_extra: true
-    required: true
-    secret: true
+    is_in_extra: true
+    is_required: true
+    is_secret: true
   - airflow_param_name: extra__google_cloud_platform__project
     friendly_name: Project ID
     description: The Google Cloud project ID to connect to
     example: airflow
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: extra__google_cloud_platform__scope
     friendly_name: Scopes
     description: A list of comma-separated Google Cloud scopes to authenticate with.
     example: https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: extra__google_cloud_platform__num_retries
     friendly_name: Number of Retries
     description: >-
@@ -37,6 +37,6 @@ parameters:
       last request. If zero (default), we attempt the request only once.
     example: '0'
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false

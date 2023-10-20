@@ -7,8 +7,8 @@ method_name: Private Key
   - airflow_param_name: password
     friendly_name: Private Key Passphrase
     type: str
-    required: true
-    secret: true
+    is_required: true
+    is_secret: true
     description: The passphrase to use for authenticating against Snowflake.
     example: my_private_key_passphrase
 
@@ -16,8 +16,8 @@ method_name: Private Key
   - airflow_param_name: private_key_path
     friendly_name: Private Key Path
     type: str
-    required: true
-    in_extra: true
-    secret: false
+    is_required: true
+    is_in_extra: true
+    is_secret: false
     description: The path to the private key file to use for authenticating against Snowflake.
     example: /path/to/private/key/file

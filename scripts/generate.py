@@ -97,7 +97,8 @@ for connection in connections:
                 if any(
                     [
                         p["airflow_param_name"] == parameter["airflow_param_name"]
-                        and p.get("in_extra", False) == parameter.get("in_extra", False)
+                        and p.get("is_in_extra", False)
+                        == parameter.get("is_in_extra", False)
                         for p in new_params
                     ]
                 ):
@@ -106,8 +107,8 @@ for connection in connections:
                         for p in new_params
                         if not (
                             p["airflow_param_name"] == parameter["airflow_param_name"]
-                            and p.get("in_extra", False)
-                            == parameter.get("in_extra", False)
+                            and p.get("is_in_extra", False)
+                            == parameter.get("is_in_extra", False)
                         )
                     ]
 

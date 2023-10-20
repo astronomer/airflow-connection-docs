@@ -10,14 +10,14 @@ parameters:
     description: AWS Access Key ID
     example: AKIAIOSFODNN7EXAMPLE
     type: str
-    in_extra: true
-    required: true
-    secret: false
+    is_in_extra: true
+    is_required: true
+    is_secret: false
   - airflow_param_name: aws_secret_access_key
     friendly_name: Secret Access Key
     description: AWS Secret Access Key
     example: wJalrXUtnFEMI%2FK7MDENGbPxRfiCYEXAMPLEKEY
     type: str
-    in_extra: true
-    required: true
-    secret: true
+    is_in_extra: true
+    is_required: true
+    is_secret: true

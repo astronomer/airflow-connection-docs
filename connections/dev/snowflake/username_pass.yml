@@ -8,7 +8,7 @@ guide_path: ./guides/username_pass.md
   - airflow_param_name: password
     friendly_name: Password
     type: str
-    required: true
-    secret: true
+    is_required: true
+    is_secret: true
     description: The password to use for authenticating against Snowflake.
     example: my_password

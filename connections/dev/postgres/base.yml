@@ -10,43 +10,43 @@ parameters:
     description: ''
     example: My connection
     type: str
-    required: false
-    secret: false
+    is_required: false
+    is_secret: false
   - airflow_param_name: host
     friendly_name: Host
     description: The hostname or IP address of the database server
     example: localhost
     type: str
-    required: true
-    secret: false
+    is_required: true
+    is_secret: false
   - airflow_param_name: port
     friendly_name: Port
     description: The port number of the database server
     example: '5432'
     type: str
-    required: true
-    secret: false
+    is_required: true
+    is_secret: false
   - airflow_param_name: login
     friendly_name: Login
     description: The username to connect to the database server
     example: user
     type: str
-    required: true
-    secret: false
+    is_required: true
+    is_secret: false
   - airflow_param_name: password
     friendly_name: Password
     description: The password to connect to the database server
     example: pass
     type: str
-    required: true
-    secret: true
+    is_required: true
+    is_secret: true
   - airflow_param_name: schema
     friendly_name: Schema
     description: The schema to connect to the database server
     example: public
     type: str
-    required: true
-    secret: false
+    is_required: true
+    is_secret: false
   - airflow_param_name: sslmode
     friendly_name: SSL Mode
     description: >-
@@ -55,9 +55,9 @@ parameters:
       disable, allow, prefer, require, verify-ca, verify-full.
     example: allow
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: sslcert
     friendly_name: SSL Cert
     description: >-
@@ -65,9 +65,9 @@ parameters:
       replacing the default.
     example: /tmp/client-cert.pem
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: sslkey
     friendly_name: SSL Key
     description: >-
@@ -75,9 +75,9 @@ parameters:
       the default.
     example: /tmp/client-key.pem
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: sslrootcert
     friendly_name: SSL Root Cert
     description: >-
@@ -85,9 +85,9 @@ parameters:
       authority (CA) certificate(s).
     example: xxx
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: sslcrl
     friendly_name: SSL CRL
     description: >-
@@ -95,17 +95,17 @@ parameters:
       list (CRL).
     example: xxx
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: application_name
     friendly_name: Application Name
     description: Specifies a value for the application_name configuration parameter.
     example: astrobuild
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: keepalives_idle
     friendly_name: Keep Alive
     description: >-
@@ -113,14 +113,14 @@ parameters:
       a keepalive message to the server.
     example: '10'
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
   - airflow_param_name: client_encoding
     friendly_name: Client Encoding
     description: Specifies client encoding (character set) of the client connection.
     example: auto
     type: str
-    in_extra: true
-    required: false
-    secret: false
+    is_in_extra: true
+    is_required: false
+    is_secret: false
