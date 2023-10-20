@@ -22,8 +22,8 @@ parameters:
   - airflow_param_name: port
     friendly_name: Port
     description: The port number of the database server
-    example: '5439'
-    type: str
+    example: 5439
+    type: int
     is_required: true
     is_secret: false
   - airflow_param_name: login

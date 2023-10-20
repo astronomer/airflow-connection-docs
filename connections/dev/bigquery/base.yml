@@ -35,8 +35,8 @@ parameters:
       Integer, number of times to retry with randomized exponential backoff.
       If all retries fail, the googleapiclient.errors.HttpError represents the
       last request. If zero (default), we attempt the request only once.
-    example: '0'
-    type: str
+    example: 0
+    type: int
     is_in_extra: true
     is_required: false
     is_secret: false
