@@ -1,0 +1,39 @@
+name: Update connections
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  validate-generated-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          cache: 'pip'
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Generate connection types from dev
+        run: |
+          python3 scripts/generate.py dev ${{ github.sha }}
+
+      - name: Print connection types
+        run: |
+          cat dev-connection-types-request-body.json
+
+      - name: Update connection types
+        run: |
+          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" -d @dev-connection-types-request-body.json https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=false)
+          EXPECTED_BODY='{"message":"All connections are valid"}'
+
+          if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then
+            echo "Received error: $RESPONSE_BODY"
+            exit 1
+          fi
