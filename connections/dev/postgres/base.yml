@@ -22,8 +22,8 @@ parameters:
   - airflow_param_name: port
     friendly_name: Port
     description: The port number of the database server
-    example: '5432'
-    type: str
+    example: 5432
+    type: int
     is_required: true
     is_secret: false
   - airflow_param_name: login
@@ -111,8 +111,8 @@ parameters:
     description: >-
       Controls the number of seconds of inactivity after which TCP should send
       a keepalive message to the server.
-    example: '10'
-    type: str
+    example: 10
+    type: int
     is_in_extra: true
     is_required: false
     is_secret: false
