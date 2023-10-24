@@ -1,6 +1,9 @@
 name: Update stage
 
 on:
+  workflow_dispatch:
+    branches:
+      - main
   push:
     branches:
       - main
