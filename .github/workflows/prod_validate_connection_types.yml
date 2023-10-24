@@ -1,6 +1,23 @@
-name: Validate connections.json
-on: [push]
+name: Validate prod connection types
+on:
+  workflow_dispatch:
 jobs:
+  restrict-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Validate Actor
+      id: validate
+      run: |
+        if [[ ! "iancmoritz jlaneve harels" =~ "$ACTOR" ]]; then
+          echo "Error: $ACTOR is not allowed to run this action."
+          exit 1
+        fi
+      env:
+        ACTOR: ${{ github.actor }}
+
   validate-generated-json:
     runs-on: ubuntu-latest
     steps:
