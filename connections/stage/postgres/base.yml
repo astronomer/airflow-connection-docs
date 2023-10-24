@@ -1,0 +1,126 @@
+id: postgres_base
+connection_type: postgres
+visible: true
+connection_name: Postgres
+description: Configure a connection to a postgres database.
+package: apache-airflow-providers-postgres
+parameters:
+  - airflow_param_name: description
+    friendly_name: Description
+    description: ''
+    example: My connection
+    type: str
+    is_required: false
+    is_secret: false
+  - airflow_param_name: host
+    friendly_name: Host
+    description: The hostname or IP address of the database server
+    example: localhost
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: port
+    friendly_name: Port
+    description: The port number of the database server
+    example: 5432
+    type: int
+    is_required: true
+    is_secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: The username to connect to the database server
+    example: user
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: The password to connect to the database server
+    example: pass
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: schema
+    friendly_name: Schema
+    description: The schema to connect to the database server
+    example: public
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: sslmode
+    friendly_name: SSL Mode
+    description: >-
+      This option determines whether or with what priority a secure SSL TCP/IP
+      connection will be negotiated with the server. There are six modes:
+      disable, allow, prefer, require, verify-ca, verify-full.
+    example: allow
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: sslcert
+    friendly_name: SSL Cert
+    description: >-
+      This parameter specifies the file name of the client SSL certificate,
+      replacing the default.
+    example: /tmp/client-cert.pem
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: sslkey
+    friendly_name: SSL Key
+    description: >-
+      This parameter specifies the file name of the client SSL key, replacing
+      the default.
+    example: /tmp/client-key.pem
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: sslrootcert
+    friendly_name: SSL Root Cert
+    description: >-
+      This parameter specifies the name of a file containing SSL certificate
+      authority (CA) certificate(s).
+    example: xxx
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: sslcrl
+    friendly_name: SSL CRL
+    description: >-
+      This parameter specifies the file name of the SSL certificate revocation
+      list (CRL).
+    example: xxx
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: application_name
+    friendly_name: Application Name
+    description: Specifies a value for the application_name configuration parameter.
+    example: astrobuild
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: keepalives_idle
+    friendly_name: Keep Alive
+    description: >-
+      Controls the number of seconds of inactivity after which TCP should send
+      a keepalive message to the server.
+    example: 10
+    type: int
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: client_encoding
+    friendly_name: Client Encoding
+    description: Specifies client encoding (character set) of the client connection.
+    example: auto
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false

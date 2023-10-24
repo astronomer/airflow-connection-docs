@@ -1,0 +1,28 @@
+id: databricks_base
+connection_type: databricks
+visible: true
+connection_name: Databricks
+description: Configure a connection to Databricks.
+package: apache-airflow-providers-databricks
+parameters:
+  - airflow_param_name: host
+    friendly_name: Host
+    description: Databricks host URL
+    example: 'https://my-cluster.cloud.databricks.com/'
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: Databricks personal access token
+    example: wJalrXUtnFEMI%2FK7MDENGbPxRfiCYEXAMPLEKEY
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: http_path
+    friendly_name: HTTP Path
+    description: Cluster HTTP Path
+    example: /sql/1.0/warehouses/foobar
+    type: str
+    is_required: false
+    is_secret: false

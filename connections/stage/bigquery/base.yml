@@ -1,0 +1,42 @@
+id: gcpbigquery_base
+connection_type: gcpbigquery
+visible: true
+connection_name: BigQuery
+description: Configure a connection to a BigQuery database.
+package: apache-airflow-providers-google
+parameters:
+  - airflow_param_name: extra__google_cloud_platform__keyfile_dict
+    friendly_name: Keyfile JSON
+    description: Contents of a service account key file (JSON format)
+    example: '{ ... }'
+    type: str
+    is_in_extra: true
+    is_required: true
+    is_secret: true
+  - airflow_param_name: extra__google_cloud_platform__project
+    friendly_name: Project ID
+    description: The Google Cloud project ID to connect to
+    example: airflow
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: extra__google_cloud_platform__scope
+    friendly_name: Scopes
+    description: A list of comma-separated Google Cloud scopes to authenticate with.
+    example: https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: extra__google_cloud_platform__num_retries
+    friendly_name: Number of Retries
+    description: >-
+      Integer, number of times to retry with randomized exponential backoff.
+      If all retries fail, the googleapiclient.errors.HttpError represents the
+      last request. If zero (default), we attempt the request only once.
+    example: 0
+    type: int
+    is_in_extra: true
+    is_required: false
+    is_secret: false
