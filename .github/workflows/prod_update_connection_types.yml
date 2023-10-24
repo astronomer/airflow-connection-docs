@@ -1,10 +1,7 @@
-name: Validate prod
+name: Update prod
 
 on:
   workflow_dispatch:
-  pull_request:
-    paths:
-      - 'connections/prod/**'
 
 jobs:
   restrict-job-to-devex-admins:
@@ -23,7 +20,7 @@ jobs:
       env:
         ACTOR: ${{ github.actor }}
 
-  validate-generated-json:
+  update-connection-types:
     needs: restrict-job-to-devex-admins
     runs-on: ubuntu-latest
     steps:
@@ -48,7 +45,7 @@ jobs:
 
       - name: Dry-Run prod connections
         run: |
-          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.PROD_BEARER_TOKEN }}" -d @prod-connection-types-request-body.json https://api.astronomer.io/registryV2/v1alpha1/organizations/org-astro-dev-ex/connection-types?isDryRun=true)
+          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.PROD_BEARER_TOKEN }}" -d @prod-connection-types-request-body.json https://api.astronomer.io/registryV2/v1alpha1/organizations/org-astro-dev-ex/connection-types?isDryRun=false)
           EXPECTED_BODY='{"message":"All connections are valid"}'
 
           if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then
