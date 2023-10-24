@@ -24,5 +24,5 @@ parameters:
     description: Cluster HTTP Path
     example: /sql/1.0/warehouses/foobar
     type: str
-    is_required: true
+    is_required: false
     is_secret: false
