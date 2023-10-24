@@ -1,4 +1,4 @@
-name: Validate connections.json
+name: Validate dev
 on: [push]
 jobs:
   validate-generated-json:

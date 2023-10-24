@@ -1,4 +1,4 @@
-name: Validate prod connection types
+name: Validate dev
 on:
   workflow_dispatch:
 jobs:

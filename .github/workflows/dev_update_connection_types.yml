@@ -1,4 +1,4 @@
-name: Update connections
+name: Update dev
 
 on:
   push:
