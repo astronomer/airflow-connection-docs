@@ -48,7 +48,7 @@ jobs:
       - name: Dry-Run prod connections
         run: |
           RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.PROD_BEARER_TOKEN }}" -d @prod-connection-types-request-body.json https://api.astronomer.io/registryV2/v1alpha1/organizations/org-astro-dev-ex/connection-types?isDryRun=false)
-          EXPECTED_BODY='{"message":"All connections are valid"}'
+          EXPECTED_BODY='{"message":"All connections refreshed"}'
 
           if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then
             echo "Received error: $RESPONSE_BODY"
