@@ -1,5 +1,10 @@
-name: Validate connections.json
-on: [push]
+name: Validate stage
+
+on:
+  pull_request:
+    paths:
+      - 'connections/stage/**'
+
 jobs:
   validate-generated-json:
     runs-on: ubuntu-latest
@@ -15,17 +20,17 @@ jobs:
 
       - run: pip install -r scripts/requirements.txt
 
-      - name: Generate connection types from dev
+      - name: Generate connection types from stage
         run: |
-          python3 scripts/generate.py dev ${{ github.sha }}
+          python3 scripts/generate.py stage ${{ github.sha }}
 
       - name: Print connection types
         run: |
-          cat dev-connection-types-request-body.json
+          cat stage-connection-types-request-body.json
 
-      - name: Dry-Run connections-dev.json
+      - name: Dry-Run stage connections
         run: |
-          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" -d @dev-connection-types-request-body.json https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true)
+          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.STAGE_BEARER_TOKEN }}" -d @stage-connection-types-request-body.json https://api.astronomer-stage.io/registryV2/v1alpha1/organizations/astro01/connection-types?isDryRun=true)
           EXPECTED_BODY='{"message":"All connections are valid"}'
 
           if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then

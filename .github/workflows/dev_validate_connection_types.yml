@@ -1,10 +1,10 @@
-name: Update connections
+name: Validate dev
 
 on:
-  push:
-    branches:
-      - main
-      
+  pull_request:
+    paths:
+      - 'connections/dev/**'
+
 jobs:
   validate-generated-json:
     runs-on: ubuntu-latest
@@ -28,10 +28,10 @@ jobs:
         run: |
           cat dev-connection-types-request-body.json
 
-      - name: Update connection types
+      - name: Dry-Run connections-dev.json
         run: |
-          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" -d @dev-connection-types-request-body.json https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=false)
-          EXPECTED_BODY='{"message":"All connections refreshed"}'
+          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.DEV_BEARER_TOKEN }}" -d @dev-connection-types-request-body.json https://api.astronomer-dev.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true)
+          EXPECTED_BODY='{"message":"All connections are valid"}'
 
           if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then
             echo "Received error: $RESPONSE_BODY"
