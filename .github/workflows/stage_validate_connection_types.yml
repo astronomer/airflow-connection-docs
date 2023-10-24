@@ -1,0 +1,34 @@
+name: Validate connections.json
+on: [push]
+jobs:
+  validate-generated-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          cache: 'pip'
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Generate connection types from stage
+        run: |
+          python3 scripts/generate.py stage ${{ github.sha }}
+
+      - name: Print connection types
+        run: |
+          cat stage-connection-types-request-body.json
+
+      - name: Dry-Run stage connections
+        run: |
+          RESPONSE_BODY=$(curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.STAGE_BEARER_TOKEN }}" -d @stage-connection-types-request-body.json https://api.astronomer-stage.io/registryV2/v1alpha1/organizations/astronomer/connection-types?isDryRun=true)
+          EXPECTED_BODY='{"message":"All connections are valid"}'
+
+          if [[ "$RESPONSE_BODY" != "$EXPECTED_BODY" ]]; then
+            echo "Received error: $RESPONSE_BODY"
+            exit 1
+          fi

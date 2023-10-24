@@ -1,0 +1,104 @@
+id: snowflake_base
+connection_type: snowflake
+visible: false
+connection_name: Snowflake
+description: Snowflake is a cloud-based data-warehousing platform that supports both structured and semi-structured data.
+package: apache-airflow-providers-snowflake
+parameters:
+  # login
+  - airflow_param_name: login
+    friendly_name: Username
+    type: str
+    is_required: true
+    is_secret: false
+    description: The username to use for authenticating against Snowflake.
+    example: my_username
+
+  # schema
+  - airflow_param_name: schema
+    friendly_name: Default schema
+    type: str
+    is_required: false
+    is_secret: false
+    description: The name of the default schema to use for the connection.
+    example: my_schema
+
+  # account
+  - airflow_param_name: account
+    friendly_name: Account
+    is_in_extra: true
+    type: str
+    is_required: false
+    is_secret: false
+    description: The name of the Snowflake account to connect to.
+    example: gp12345
+
+  # database
+  - airflow_param_name: database
+    friendly_name: Database
+    is_in_extra: true
+    type: str
+    is_required: false
+    is_secret: false
+    description: The name of the default database to use for the connection.
+    example: my_database
+
+  # region
+  - airflow_param_name: region
+    friendly_name: Region
+    is_in_extra: true
+    type: str
+    is_required: false
+    is_secret: false
+    description: The name of the Snowflake region to connect to.
+    example: my_region
+
+  # warehouse
+  - airflow_param_name: warehouse
+    friendly_name: Warehouse
+    is_in_extra: true
+    type: str
+    is_required: false
+    is_secret: false
+    description: The name of the default warehouse to use for the connection.
+    example: my_warehouse
+
+  # role
+  - airflow_param_name: role
+    friendly_name: Role
+    is_in_extra: true
+    type: str
+    is_required: false
+    is_secret: false
+    description: The name of the default role to use for the connection.
+    example: my_role
+
+  # authenticator
+  - airflow_param_name: authenticator
+    friendly_name: Authenticator
+    is_in_extra: true
+    type: str
+    is_required: false
+    is_secret: false
+    description: The authenticator to use for the connection.
+    example: my_authenticator
+
+  # session_parameters
+  - airflow_param_name: session_parameters
+    friendly_name: Session parameters
+    is_in_extra: true
+    type: dict
+    is_required: false
+    is_secret: false
+    description: The session parameters to use for the connection.
+    example: { "QUERY_TAG": "airflow" }
+
+  # insecure_mode
+  - airflow_param_name: insecure_mode
+    friendly_name: Insecure mode
+    is_in_extra: true
+    type: bool
+    is_required: false
+    is_secret: false
+    description: Whether to use insecure mode for the connection.
+    example: false
