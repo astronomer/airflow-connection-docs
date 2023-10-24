@@ -6,7 +6,7 @@ on:
       - 'connections/prod/**'
 
 jobs:
-  restrict-job:
+  restrict-job-to-devex-admins:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -23,6 +23,7 @@ jobs:
         ACTOR: ${{ github.actor }}
 
   validate-generated-json:
+    needs: restrict-job-to-devex-admins
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
