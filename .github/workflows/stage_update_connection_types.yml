@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-
+    paths:
+      - 'connections/stage/**'
 jobs:
   update-connection-types:
     runs-on: ubuntu-latest
