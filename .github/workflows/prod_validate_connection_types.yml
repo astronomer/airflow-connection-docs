@@ -1,6 +1,10 @@
-name: Validate dev
+name: Validate prod
+
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      - 'connections/prod/**'
+
 jobs:
   restrict-job:
     runs-on: ubuntu-latest

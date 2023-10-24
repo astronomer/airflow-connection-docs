@@ -1,5 +1,10 @@
 name: Validate stage
-on: [push]
+
+on:
+  push:
+    paths:
+      - 'connections/stage/**'
+
 jobs:
   validate-generated-json:
     runs-on: ubuntu-latest
