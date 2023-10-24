@@ -2,6 +2,8 @@ name: Update prod
 
 on:
   workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   restrict-job-to-devex-admins:
