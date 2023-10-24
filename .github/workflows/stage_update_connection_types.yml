@@ -1,9 +1,9 @@
 name: Update stage
 
 on:
-  pull_request:
-    paths:
-      - 'connections/stage/**'
+  push:
+    branches:
+      - main
 
 jobs:
   update-connection-types:
