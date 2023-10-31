@@ -28,7 +28,7 @@ parameters:
     friendly_name: Account
     is_in_extra: true
     type: str
-    is_required: false
+    is_required: true
     is_secret: false
     description: The name of the Snowflake account to connect to.
     example: gp12345
