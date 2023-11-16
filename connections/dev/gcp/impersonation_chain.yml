@@ -1,0 +1,15 @@
+id: gcp_impersonation_chain
+visible: true
+inherit_from: gcp_base
+method_name: Impersonation Chain
++parameters:
+  - airflow_param_name: impersonation_chain
+    friendly_name: Impersonation Chain
+    description: >-
+      Impersonation chain of Google Service Accounts to impersonate.
+      Ensure your Astro Deployment's Workload Identity has been granted the Service Account Token Creator on the first account in the chain.
+    example: google-service-account@google-project.iam.gserviceaccount.com
+    type: string
+    is_in_extra: true
+    is_required: false
+    is_secret: false
