@@ -62,9 +62,9 @@ parameters:
     description: Dictionary of SSL parameters that control connecting using SSL. Those parameters are server specific and should contain ca, cert, key, capath, cipher parameters. Note that to be useful in URL notation, this parameter might also be a string where the SSL dictionary is a string-encoded JSON dictionary.
     example:
       {
-        \"cert\": \"/tmp/client-cert.pem\",
-        \"ca\": \"/tmp/server-ca.pem\",
-        \"key\": \"/tmp/client-key.pem\",
+        "cert": "/tmp/client-cert.pem",
+        "ca": "/tmp/server-ca.pem",
+        "key": "/tmp/client-key.pem",
       }
     type: str
     is_in_extra: true
