@@ -10,4 +10,4 @@ method_name: JSON Dictionary
     is_secret: true
     is_in_extra: true
     description: Specifies the json that contains the authentication information
-    example: { ... }
+    example: "{ ... }"
