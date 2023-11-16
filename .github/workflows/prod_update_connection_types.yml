@@ -15,7 +15,7 @@ jobs:
     - name: Validate Actor
       id: validate
       run: |
-        if [[ ! "iancmoritz jlaneve harels" =~ "$ACTOR" ]]; then
+        if [[ ! "iancmoritz jlaneve harels melugoyal" =~ "$ACTOR" ]]; then
           echo "Error: $ACTOR is not allowed to run this action."
           exit 1
         fi
