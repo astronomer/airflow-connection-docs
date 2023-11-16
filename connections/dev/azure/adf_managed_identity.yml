@@ -1,0 +1,13 @@
+id: adf_azure_managed_identity
+visible: true
+inherit_from: azure_managed_identity
+method_name: Managed Identity with Azure Data Factory
++parameters:
+  - airflow_param_name: subscriptionId
+    friendly_name: Subscription ID of ADF Instance
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: true
+    description: The subscription ID where the ADF instance resides
+    example: 882eeec9-0bf2-4d2f-971d-3831747c488e
