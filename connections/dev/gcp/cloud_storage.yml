@@ -2,3 +2,4 @@ id: gcp_cloud_storage
 visible: true
 inherit_from: gcp_base
 method_name: Google Cloud Storage
++parameters:
