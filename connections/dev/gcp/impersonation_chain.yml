@@ -1,7 +1,7 @@
 id: gcp_impersonation_chain
 visible: true
 inherit_from: gcp_base
-method_name: ImpersonationChain
+method_name: Impersonation Chain
 +parameters:
   - airflow_param_name: impersonation_chain
     friendly_name: Impersonation Chain
