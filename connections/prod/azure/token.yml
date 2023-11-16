@@ -32,4 +32,4 @@ method_name: Token
     is_secret: false
     is_in_extra: true
     description: Specify the subscription to use
-    example: my_subscription_id
+    example: fa1a02da-1e1f-4f09-9ff4-f6029cbf4bae
