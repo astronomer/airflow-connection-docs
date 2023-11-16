@@ -1,0 +1,21 @@
+id: github_base
+connection_type: github
+visible: true
+connection_name: Github
+description: Configure a Github connection
+package: apache-airflow-providers-github
+parameters:
+  - airflow_param_name: access_token
+    friendly_name: Access Token
+    description: Personal Access token with required permissions.
+    example: ghp_abcdefghijk1234567890
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: host
+    friendly_name: Host
+    description: Specify the GitHub Enterprise Url that can be used for GitHub Enterprise connection.
+    example: https://github.mydomain.com
+    type: str
+    is_required: false
+    is_secret: false
