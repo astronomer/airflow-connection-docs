@@ -3,7 +3,7 @@ connection_type: mongodb
 visible: true
 connection_name: MongoDB
 description: Configure a connection to a MongoDB database.
-package: apache-airflow-providers-mongodb
+package: apache-airflow-providers-mongo
 parameters:
   - airflow_param_name: host
     friendly_name: Host
