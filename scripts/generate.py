@@ -90,7 +90,7 @@ for connection in connections:
         # with the parameters from the parent connection
         if "+parameters" in new_conn:
             print(f"\tMerging parameters from {new_conn['inherit_from']}")
-            new_params = parent["parameters"].copy()
+            new_params = parent.get("parameters", []).copy()
             for parameter in new_conn["+parameters"]:
                 # if the parameter airflow_param_name is already in the parent connection,
                 # delete it
