@@ -4,3 +4,12 @@ visible: false
 connection_name: Azure
 description: The Microsoft Azure connection type enables the Azure Integrations
 package: apache-airflow-providers-microsoft-azure
+parameters:
+  - airflow_param_name: subscriptionId
+    friendly_name: Subscription ID
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+    description: Specify the subscription to use
+    example: fa1a02da-1e1f-4f09-9ff4-f6029cbf4bae
