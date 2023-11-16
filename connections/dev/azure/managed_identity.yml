@@ -1,7 +1,7 @@
 id: azure_managed_identity
 visible: true
 inherit_from: azure_base
-method_name: Managed Identity
+method_name: Managed Identity (Requires Azure Provider v8.2+)
 +parameters:
   - airflow_param_name: managed_identity_client_id
     friendly_name: Managed Identity Client ID
