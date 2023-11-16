@@ -1,0 +1,6 @@
+id: azure_base
+connection_type: azure
+visible: false
+connection_name: Azure
+description: The Microsoft Azure connection type enables the Azure Integrations
+package: apache-airflow-providers-microsoft-azure

@@ -1,0 +1,72 @@
+id: mysql_base
+connection_type: mysql
+visible: true
+connection_name: MySQL
+description: Configure a connection to a MySQL database.
+package: apache-airflow-providers-mysql
+parameters:
+  - airflow_param_name: host
+    friendly_name: Host
+    description: The hostname or IP address of the database server
+    example: localhost
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: The username to connect to the database server
+    example: user
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: The password to connect to the database server
+    example: pass
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: schema
+    friendly_name: Schema
+    description: The schema to connect to the database server
+    example: public
+    type: str
+    is_required: false
+    is_secret: false
+  - airflow_param_name: charset
+    friendly_name: Charset
+    description: Specify charset of the connection
+    example: utf8
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: cursor
+    friendly_name: Cursor
+    description: One of sscursor, dictcursor, ssdictcursor. Specifies cursor class to be used
+    example: sscursor
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: unix_socket
+    friendly_name: UNIX Socket
+    description: UNIX socket used instead of the default socket.
+    example: /var/socket
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: ssl
+    friendly_name: SSL
+    description: Dictionary of SSL parameters that control connecting using SSL. Those parameters are server specific and should contain ca, cert, key, capath, cipher parameters. Note that to be useful in URL notation, this parameter might also be a string where the SSL dictionary is a string-encoded JSON dictionary.
+    example:
+      {
+        "cert": "/tmp/client-cert.pem",
+        "ca": "/tmp/server-ca.pem",
+        "key": "/tmp/client-key.pem",
+      }
+    type: str
+    is_in_extra: true
+    is_required: false
+    is_secret: false

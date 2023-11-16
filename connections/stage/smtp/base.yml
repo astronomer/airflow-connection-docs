@@ -1,0 +1,57 @@
+id: smtp_base
+connection_type: smtp
+visible: true
+connection_name: SMTP
+description: Configure an SMTP connection to send emails
+package: apache-airflow-providers-smtp
+parameters:
+  - airflow_param_name: host
+    friendly_name: Host
+    description: The hostname or IP address of the SMTP server
+    example: localhost
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: port
+    friendly_name: Port
+    description: The port number of the SMTP server
+    example: 5432
+    type: int
+    is_required: true
+    is_secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: The username to connect to the SMTP server
+    example: username
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: The password to connect to the SMTP server
+    example: pass
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: ssl
+    friendly_name: SSL Mode
+    description: This option determines whether to enable SSL mode or not.
+    type: bool
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: ssl
+    friendly_name: Start TLS
+    description: This option determines whether to enable TLS or not.
+    type: bool
+    is_in_extra: true
+    is_required: false
+    is_secret: false
+  - airflow_param_name: mail_from
+    friendly_name: Mail From Email
+    description: The email address to send mail from
+    example: myemail@gmail.com
+    type: str
+    is_in_extra: true
+    is_required: true
+    is_secret: false

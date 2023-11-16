@@ -1,0 +1,67 @@
+id: kubernetes
+connection_type: kubernetes
+visible: true
+connection_name: Kubernetes
+description: Configure a connection to a Kubernetes cluster.
+package: apache-airflow-providers-cncf-kubernetes
+parameters:
+  - airflow_param_name: in_cluster
+    friendly_name: In Cluster
+    description: Use in cluster configuration
+    type: bool
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: kube_config_path
+    friendly_name: Kube Config Path
+    description: Use custom path to kube config
+    type: str
+    example: ~/.kube/config
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: kube_config
+    friendly_name: Kube Config
+    description: Kube config that used to connect to Kubernetes client
+    type: dict
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: namespace
+    friendly_name: Namespace
+    description: Default Kubernetes namespace for the connection
+    type: str
+    example: my-namespace
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: cluster_context
+    friendly_name: Cluster Context
+    description: When using a kube config, can specify which context to use
+    type: str
+    example: my-context
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: disable_verify_ssl
+    friendly_name: Disable Verify SSL
+    description: Can optionally disable SSL certificate verification. By default SSL is verified
+    type: bool
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: disable_tcp_keepalive
+    friendly_name: Disable TCP Keepalive
+    description: TCP keepalive is a feature (enabled by default) that tries to keep long-running connections alive. Set this parameter to True to disable this feature
+    type: bool
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: xcom_sidecar_image
+    friendly_name: XCom Sidecar Image
+    description: Define the image used by the PodDefaults.SIDECAR_CONTAINER (defaults to "alpine") to allow private repositories, as well as custom image overrides
+    type: str
+    example: alpine
+    is_required: false
+    is_secret: false
+    is_in_extra: true

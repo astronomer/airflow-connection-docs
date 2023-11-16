@@ -1,0 +1,117 @@
+id: sftp_base
+connection_type: sftp
+visible: true
+connection_name: SFTP
+description: Configure a connection to an SFTP server.
+package: apache-airflow-providers-sftp
+parameters:
+  - airflow_param_name: host
+    friendly_name: Host
+    description: The Hostname or IP of the remote machine
+    example: example.com
+    type: str
+    is_required: false
+    is_secret: false
+  - airflow_param_name: port
+    friendly_name: Port
+    description: The SSH port of the remote machine
+    example: 22
+    type: int
+    is_required: false
+    is_secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: The SFTP username for the remote machine
+    example: user
+    type: str
+    is_required: false
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: The SFTP password for the remote machine
+    example: pass
+    type: str
+    is_required: false
+    is_secret: true
+  - airflow_param_name: key_file
+    friendly_name: Key File
+    description: Full Path of the private SSH Key file
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: private_key
+    friendly_name: Private Key
+    description: Content of the private key
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: private_key_passphrase
+    friendly_name: Private Key Passphrase
+    description: Content of the private key passphrase
+    type: str
+    is_required: false
+    is_secret: true
+    is_in_extra: true
+  - airflow_param_name: conn_timeout
+    friendly_name: Connection Timeout
+    description: Optional timeout for the TCP connect (in seconds)
+    type: int
+    default: 10
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: compress
+    friendly_name: Compress
+    description: true to enable compression, false to refuse compression
+    type: bool
+    default: true
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: no_host_key_check
+    friendly_name: No Host Key Check
+    description: Set to false to restrict connecting to hosts with no entries in ~/.ssh/known_hosts
+    type: bool
+    default: true
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: allow_host_key_change
+    friendly_name: Allow Host Key Change
+    description: Set to true to allow connecting to hosts with changed host keys
+    type: bool
+    default: false
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: look_for_keys
+    friendly_name: Look for Keys
+    description: Set to false to disable searching for discoverable private key files in ~/.ssh/
+    type: bool
+    default: true
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: host_key
+    friendly_name: Host Key
+    description: The base64 encoded ssh-rsa public key of the host
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: disabled_algorithms
+    friendly_name: Disabled Algorithms
+    description: Dictionary mapping algorithm type to an iterable of disabled algorithm identifiers
+    type: dict
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: ciphers
+    friendly_name: Ciphers
+    description: List of ciphers to use in order of preference
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true

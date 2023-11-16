@@ -1,0 +1,21 @@
+id: azure_managed_identity
+visible: true
+inherit_from: azure_base
+method_name: Managed Identity
++parameters:
+  - airflow_param_name: managed_identity_client_id
+    friendly_name: Managed Identity Client ID
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: true
+    description: The client ID of a user-assigned managed identity
+    example: my_client_id
+  - airflow_param_name: workload_identity_tenant_id
+    friendly_name: Workload Identity Tenant ID
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: true
+    description: ID of the application’s Microsoft Entra tenant. Also called its “directory” ID
+    example: my_tenant_id

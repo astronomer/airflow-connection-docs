@@ -1,0 +1,28 @@
+id: zendesk
+connection_type: zendesk
+visible: true
+connection_name: Zendesk
+description: Configure a connection to Zendesk.
+package: apache-airflow-providers-zendesk
+parameters:
+  - airflow_param_name: host
+    friendly_name: Host
+    description: Your Zendesk host URL
+    example: "subdomain.zendesk.com"
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: Your Zendesk login
+    example: "user"
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: Your Zendesk password
+    example: abc123
+    type: str
+    is_required: true
+    is_secret: true

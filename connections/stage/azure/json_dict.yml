@@ -1,0 +1,13 @@
+id: azure_json_dict
+visible: true
+inherit_from: azure_base
+method_name: JSON Dictionary
++parameters:
+  - airflow_param_name: key_json
+    friendly_name: Key JSON
+    type: str
+    is_required: true
+    is_secret: true
+    is_in_extra: true
+    description: Specifies the json that contains the authentication information
+    example: "{ ... }"
