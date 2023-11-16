@@ -2,6 +2,7 @@ id: azure_managed_identity
 visible: true
 inherit_from: azure_base
 method_name: Managed Identity
+description: The Microsoft Azure connection type enables the Azure Integrations. Note that the Managed Identity authentication method only works with the Azure provider version 8.2+
 +parameters:
   - airflow_param_name: managed_identity_client_id
     friendly_name: Managed Identity Client ID
