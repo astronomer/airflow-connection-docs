@@ -19,11 +19,3 @@ method_name: Managed Identity (Requires Azure Provider v8.2+)
     is_in_extra: true
     description: ID of the application’s Microsoft Entra tenant. Also called its “directory” ID
     example: my_tenant_id
-  - airflow_param_name: subscriptionId
-    friendly_name: Subscription ID
-    type: str
-    is_required: false
-    is_secret: false
-    is_in_extra: true
-    description: Specify the subscription to use
-    example: fa1a02da-1e1f-4f09-9ff4-f6029cbf4bae
