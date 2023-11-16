@@ -1,7 +1,7 @@
 id: sftp_base
 connection_type: sftp
 visible: true
-connection_name: SFTP Connection
+connection_name: SFTP
 description: Configure a connection to an SFTP server.
 package: apache-airflow-providers-sftp
 parameters:
@@ -111,7 +111,7 @@ parameters:
   - airflow_param_name: ciphers
     friendly_name: Ciphers
     description: List of ciphers to use in order of preference
-    type: list
+    type: str
     is_required: false
     is_secret: false
     is_in_extra: true
