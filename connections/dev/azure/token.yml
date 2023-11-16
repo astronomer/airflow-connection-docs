@@ -1,0 +1,35 @@
+id: azure_token
+visible: true
+inherit_from: azure_base
+method_name: Token
++parameters:
+  - airflow_param_name: login
+    friendly_name: Client ID
+    type: str
+    is_required: true
+    is_secret: false
+    description: Specify the client_id used for the initial connection. It can be left out to fall back on DefaultAzureCredential.
+    example: my_login
+  - airflow_param_name: password
+    friendly_name: Secret
+    type: str
+    is_required: true
+    is_secret: true
+    description: Specify the secret used for the initial connection. It can be left out to fall back on DefaultAzureCredential.
+    example: secret
+  - airflow_param_name: tenantId
+    friendly_name: Tenant ID
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: true
+    description: Specify the tenant to use
+    example: my_tenant_id
+  - airflow_param_name: subscriptionId
+    friendly_name: Subscription ID
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: true
+    description: Specify the subscription to use
+    example: my_subscription_id
