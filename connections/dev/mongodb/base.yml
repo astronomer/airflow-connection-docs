@@ -1,0 +1,49 @@
+id: mongodb_base
+connection_type: mongodb
+visible: true
+connection_name: MongoDB
+description: Configure a connection to a MongoDB database.
+package: apache-airflow-providers-mongodb
+parameters:
+  - airflow_param_name: host
+    friendly_name: Host
+    description: The hostname or IP address of the database server
+    example: localhost
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: MongoDB username that used in the connection string for the database you wish to connect to
+    example: user
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: The password to connect to the database server
+    example: pass
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: schema
+    friendly_name: Schema
+    description: Any information that you would like to specify after the port number in the connections string
+    example: public
+    type: str
+    is_required: false
+    is_secret: false
+  - airflow_param_name: port
+    friendly_name: Port
+    description: The port to connect to the database server
+    example: 27017
+    type: int
+    is_required: false
+    is_secret: false
+  - airflow_param_name: extra
+    friendly_name: Extra Configuration
+    description: Additional parameters for the connection.
+    example: { "applicationName": "Apache Airflow" }
+    type: dict
+    is_required: false
+    is_secret: false
