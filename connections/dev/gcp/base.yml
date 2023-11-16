@@ -1,8 +1,8 @@
 id: gcp_base
 connection_type: gcp
-visible: false
+visible: true
 connection_name: Google Cloud Platform
-description: Configure a connection to Google Cloud Platform services
+description: Configure a connection to Google Cloud Platform services (Sheets, Drive, Cloud Storage, etc.)
 package: apache-airflow-providers-google
 parameters:
   - airflow_param_name: extra__google_cloud_platform__keyfile_dict
@@ -15,7 +15,7 @@ parameters:
     is_secret: true
   - airflow_param_name: extra__google_cloud_platform__project
     friendly_name: Project ID
-    description: The Google Cloud project ID to connect to
+    description: The Google Cloud project ID to connect to.
     example: airflow
     type: str
     is_in_extra: true
