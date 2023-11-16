@@ -12,6 +12,7 @@ parameters:
     type: str
     is_required: true
     is_secret: true
+    is_in_extra: true
   - airflow_param_name: host
     friendly_name: Host
     description: Specify the GitHub Enterprise Url that can be used for GitHub Enterprise connection.
@@ -19,3 +20,4 @@ parameters:
     type: str
     is_required: false
     is_secret: false
+    is_in_extra: false

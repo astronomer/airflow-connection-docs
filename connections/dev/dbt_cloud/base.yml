@@ -11,6 +11,7 @@ parameters:
     type: str
     is_required: true
     is_secret: true
+    is_in_extra: true
   - airflow_param_name: tenant
     friendly_name: Tenant
     description: The Tenant name for your dbt Cloud environment. This is particularly useful when using a single-tenant dbt Cloud instance
@@ -18,6 +19,7 @@ parameters:
     type: str
     is_required: false
     is_secret: false
+    is_in_extra: true
   - airflow_param_name: account_id
     friendly_name: Account ID
     description: Optional. If an Account ID is provided in the connection, you are not required to pass account_id to operators or hook methods
@@ -25,3 +27,4 @@ parameters:
     type: str
     is_required: false
     is_secret: false
+    is_in_extra: true
