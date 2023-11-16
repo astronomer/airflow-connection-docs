@@ -36,16 +36,14 @@ parameters:
   - airflow_param_name: ssl
     friendly_name: SSL Mode
     description: This option determines whether to enable SSL mode or not.
-    example: 'true'
-    type: str
+    type: bool
     is_in_extra: true
     is_required: false
     is_secret: false
   - airflow_param_name: ssl
     friendly_name: Start TLS
     description: This option determines whether to enable TLS or not.
-    example: 'true'
-    type: str
+    type: bool
     is_in_extra: true
     is_required: false
     is_secret: false
