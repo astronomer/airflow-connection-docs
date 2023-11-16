@@ -9,7 +9,7 @@ method_name: Impersonation Chain
       Impersonation chain of Google Service Accounts to impersonate.
       Ensure your Astro Deployment's Workload Identity has been granted the Service Account Token Creator on the first account in the chain.
     example: google-service-account@google-project.iam.gserviceaccount.com
-    type: string
+    type: str
     is_in_extra: true
     is_required: false
     is_secret: false

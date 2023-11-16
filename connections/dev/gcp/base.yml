@@ -5,14 +5,6 @@ connection_name: Google Cloud Platform
 description: Configure a connection to Google Cloud Platform services (Sheets, Drive, Cloud Storage, etc.)
 package: apache-airflow-providers-google
 parameters:
-  - airflow_param_name: extra__google_cloud_platform__keyfile_dict
-    friendly_name: Keyfile JSON
-    description: Contents of a service account key file (JSON format)
-    example: '{ ... }'
-    type: str
-    is_in_extra: true
-    is_required: true
-    is_secret: true
   - airflow_param_name: extra__google_cloud_platform__project
     friendly_name: Project ID
     description: The Google Cloud project ID to connect to.
