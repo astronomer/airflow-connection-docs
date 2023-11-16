@@ -1,0 +1,39 @@
+id: slack
+connection_type: slack
+visible: true
+connection_name: Slack
+description: Configure a connection to Slack.
+method_name: API Token
+package: apache-airflow-providers-slack
+parameters:
+  - airflow_param_name: password
+    friendly_name: API Token
+    description: Your Slack API token
+    example: xoxb-1234567890123-09876543210987-AbCdEfGhIjKlMnOpQrStUvWx
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: timeout
+    friendly_name: Timeout
+    description: The maximum number of seconds the client will wait to connect and receive a response from Slack API
+    example: "60"
+    type: int
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: base_url
+    friendly_name: Base URL
+    description: A string representing the Slack API base URL.
+    example: "example.com"
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+  - airflow_param_name: proxy
+    friendly_name: Proxy
+    description: Proxy to make the Slack API call.
+    example: "example.com"
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true

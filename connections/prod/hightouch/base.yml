@@ -1,0 +1,22 @@
+id: hightouch
+connection_type: hightouch
+visible: true
+connection_name: Hightouch
+description: Configure a connection to Hightouch.
+method_name: API Token
+package: airflow-provider-hightouch
+parameters:
+  - airflow_param_name: password
+    friendly_name: API Token
+    description: Your Hightouch API token
+    example: abc123
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: host
+    friendly_name: Host
+    description: Your Hightouch host URL
+    example: "https://api.hightouch.com"
+    type: str
+    is_required: false
+    is_secret: false

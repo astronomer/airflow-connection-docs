@@ -1,0 +1,42 @@
+id: mssql_base
+connection_type: mssql
+visible: true
+connection_name: MS SQL
+description: Configure a connection to a MS SQL database.
+package: apache-airflow-providers-microsoft-mssql
+parameters:
+  - airflow_param_name: host
+    friendly_name: Host
+    description: The hostname or IP address of the database server
+    example: localhost
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: login
+    friendly_name: Login
+    description: The username to connect to the database server
+    example: user
+    type: str
+    is_required: true
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Password
+    description: The password to connect to the database server
+    example: pass
+    type: str
+    is_required: true
+    is_secret: true
+  - airflow_param_name: schema
+    friendly_name: Schema
+    description: The schema to connect to the database server
+    example: public
+    type: str
+    is_required: false
+    is_secret: false
+  - airflow_param_name: extra
+    friendly_name: Extra Configuration
+    description: Additional parameters for the connection.
+    example: { "applicationName": "Apache Airflow" }
+    type: dict
+    is_required: false
+    is_secret: false
