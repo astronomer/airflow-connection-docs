@@ -1,0 +1,13 @@
+id: gcp_keyfile
+visible: true
+inherit_from: gcp_base
+method_name: Keyfile
++parameters:
+  - airflow_param_name: extra__google_cloud_platform__keyfile_dict
+    friendly_name: Keyfile JSON
+    description: Contents of a service account key file (JSON format)
+    example: '{ ... }'
+    type: str
+    is_in_extra: true
+    is_required: true
+    is_secret: true
