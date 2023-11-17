@@ -1,6 +1,6 @@
 id: gcp_base
 connection_type: gcp
-visible: true
+visible: false
 connection_name: Google Cloud Platform
 description: Configure a connection to Google Cloud Platform services (Sheets, Drive, Cloud Storage, etc.)
 package: apache-airflow-providers-google
