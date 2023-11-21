@@ -24,7 +24,7 @@ method_name: Token
     is_secret: false
     is_in_extra: true
     description: Specify the tenant to use
-    example: my_tenant_id
+    example: fa1a02da-1e1f-4f09-9ff4-f6029cbf4bae
   - airflow_param_name: subscriptionId
     friendly_name: Subscription ID
     type: str
