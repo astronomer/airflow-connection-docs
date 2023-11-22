@@ -9,8 +9,8 @@ method_name: Managed Identity (requires provider v8.2+)
     is_required: true
     is_secret: false
     is_in_extra: true
-    description: The client ID of a user-assigned managed identity
-    example: my_client_id
+    description: The client ID (Application ID) of a user-assigned managed identity
+    example: fa1a02da-1e1f-4f09-9ff4-f6029cbf4bae
   - airflow_param_name: workload_identity_tenant_id
     friendly_name: Workload Identity Tenant ID
     type: str
@@ -18,4 +18,4 @@ method_name: Managed Identity (requires provider v8.2+)
     is_secret: false
     is_in_extra: true
     description: ID of the application’s Microsoft Entra tenant. Also called its “directory” ID
-    example: my_tenant_id
+    example: fa1a02da-1e1f-4f09-9ff4-f6029cbf4bae
