@@ -54,13 +54,14 @@ for path in connections_dir.glob("**/*.yml"):
         for parameter in connection.get("parameters", []):
             if "example" in parameter:
                 parameter["example"] = str(parameter["example"])
-        connection["processed_inheritance"] = False # temporary state we'll save for processing inheritance
         connections[connection["id"]] = connection
 
 print(f"Loaded {len(connections)} connections. Checking for inheritance...\n")
 
 # then we need to deal with inheritance
-def inherit(conn, parent):
+def inherit(id, parent_id):
+    conn = connections[id]
+    parent = connections[parent_id]
     # if this connection extends another connection, we need to merge the two
     # we do this by copying all the fields from the parent connection into the child connection
     for key, value in parent.items():
@@ -120,40 +121,23 @@ def inherit(conn, parent):
     del conn["inherit_from"]
     return conn
 
-def construct_graph(id, lst):
-    """Construct dependency list for the given connection id
-    The list is in order of inheritance
-    ."""
+def handle_inheritance(id):
+    """Recursively handle inheritance by traversing the inheritance order"""
     if "inherit_from" in connections[id]:
         parent = connections[id]["inherit_from"]
         print(f"Connection {id} inherits from {parent}")
-        lst.append(parent)
-        return construct_graph(parent, lst)
-    return lst
+        handle_inheritance(parent)
+        return inherit(id, parent)
+    return connections[id]
 
-conn_id_graph = {} # key is connection id, value is ordered list of connection id's it inherits from
 for id in connections:
-    conn_id_graph[id] = construct_graph(id, [])
-
-print(f"Connection dependency graph: {conn_id_graph}")
-for id, inheritance in conn_id_graph.items():
-    # start from the end of the list, ie the parent node with no dependencies, and work backwards through the inheritance order
-    i = len(inheritance)-1
-    while i >= 1:
-        if not connections[inheritance[i-1]]["processed_inheritance"]:
-            connections[inheritance[i-1]] = inherit(connections[inheritance[i-1]], connections[inheritance[i]])
-            connections[inheritance[i-1]]["processed_inheritance"] = True
-        i-=1
-    if inheritance and not connections[id]["processed_inheritance"]:
-        connections[id] = inherit(connections[id], connections[inheritance[0]])
-        connections[id]["processed_inheritance"] = True
+    connections[id] = handle_inheritance(id)
 
 print("Removing non-visible connections...")
 
 visible_connections = []
 for connection in connections.values():
     if connection.get("visible", True):
-        del connection["processed_inheritance"] # remove the temporary field we added
         visible_connections.append(connection)
 
 print("Done removing non-visible connections.\n")
