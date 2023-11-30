@@ -30,7 +30,7 @@ else:
     environment = "dev"
     sha = "test"
 
-connections = []
+connections = {}
 connections_dir = Path(f"connections/{environment}")
 
 # parse all .yml files in the connections directory and store them in `connections`
@@ -54,99 +54,97 @@ for path in connections_dir.glob("**/*.yml"):
         for parameter in connection.get("parameters", []):
             if "example" in parameter:
                 parameter["example"] = str(parameter["example"])
-
-        connections.append(connection)
+        connections[connection["id"]] = connection
 
 print(f"Loaded {len(connections)} connections. Checking for inheritance...\n")
 
-full_connections = []
-
 # then we need to deal with inheritance
-for connection in connections:
-    new_conn = connection.copy()
+def inherit(id, parent_id):
+    conn = connections[id]
+    parent = connections[parent_id]
+    # if this connection extends another connection, we need to merge the two
+    # we do this by copying all the fields from the parent connection into the child connection
+    for key, value in parent.items():
+        # if the key is `+parameters`, we need to merge the parameters. we do this later
+        if key == "+parameters":
+            continue
 
-    if "inherit_from" in new_conn:
-        print(f"Connection {new_conn['id']} inherits from {new_conn['inherit_from']}")
+        # otherwise, we just copy the value from the parent connection
+        if key not in conn:
+            print(f"\tAdding {key} to {conn['id']}")
+            conn[key] = value
 
-        # if this connection extends another connection, we need to merge the two
-        # we do this by copying all the fields from the parent connection into the child connection
-        parent = [c for c in connections if c["id"] == new_conn["inherit_from"]][0]
-        if not parent:
-            raise Exception(
-                f"Could not find parent connection {new_conn['inherit_from']}"
-            )
+    # if there's a `+parameters` field in the child connection, we need to merge it
+    # with the parameters from the parent connection
+    if "+parameters" in conn:
+        print(f"\tMerging parameters from {conn['inherit_from']}")
+        new_params = parent.get("parameters", []).copy()
 
-        for key, value in parent.items():
-            # if the key is `+parameters`, we need to merge the parameters. we do this later
-            if key == "+parameters":
-                continue
-
-            # otherwise, we just copy the value from the parent connection
-            if key not in new_conn:
-                print(f"\tAdding {key} to {new_conn['id']}")
-                new_conn[key] = value
-
-        # if there's a `+parameters` field in the child connection, we need to merge it
-        # with the parameters from the parent connection
-        if "+parameters" in new_conn:
-            print(f"\tMerging parameters from {new_conn['inherit_from']}")
-            new_params = parent.get("parameters", []).copy()
-
-            for parameter in new_conn["+parameters"]:
-                if "example" in parameter:
-                    parameter["example"] = str(parameter["example"])
-                # if the parameter airflow_param_name is already in the parent connection,
-                # delete it
-                if any(
-                    [
+        for parameter in conn["+parameters"]:
+            if "example" in parameter:
+                parameter["example"] = str(parameter["example"])
+            # if the parameter airflow_param_name is already in the parent connection,
+            # delete it
+            if any(
+                [
+                    p["airflow_param_name"] == parameter["airflow_param_name"]
+                    and p.get("is_in_extra", False)
+                    == parameter.get("is_in_extra", False)
+                    for p in new_params
+                ]
+            ):
+                new_params = [
+                    p
+                    for p in new_params
+                    if not (
                         p["airflow_param_name"] == parameter["airflow_param_name"]
                         and p.get("is_in_extra", False)
                         == parameter.get("is_in_extra", False)
-                        for p in new_params
-                    ]
-                ):
-                    new_params = [
-                        p
-                        for p in new_params
-                        if not (
-                            p["airflow_param_name"] == parameter["airflow_param_name"]
-                            and p.get("is_in_extra", False)
-                            == parameter.get("is_in_extra", False)
-                        )
-                    ]
+                    )
+                ]
 
-                # then add the parameter to the parent connection
-                print(
-                    f"\t\tAdding parameter {parameter['airflow_param_name']} to {new_conn['inherit_from']}"
-                )
-                new_params.append(parameter)
+            # then add the parameter to the child connection
+            print(
+                f"\t\tAdding parameter {parameter['airflow_param_name']} to {conn['inherit_from']}"
+            )
+            new_params.append(parameter)
 
-            # then delete the `+parameters` field from the child connection
-            print(f"\tRemoving `+parameters` from {new_conn['id']}")
-            del new_conn["+parameters"]
+        # then delete the `+parameters` field from the child connection
+        print(f"\tRemoving `+parameters` from {conn['id']}")
+        del conn["+parameters"]
 
-            # and finally, set the parent connection's parameters to the new parameters
-            new_conn["parameters"] = new_params
+        # and finally, set the child connection's parameters to the new parameters
+        conn["parameters"] = new_params
 
-        # and then we need to remove the `inherit_from` field from the child connection
-        print(f"Removing `inherit_from` from {new_conn['id']}\n")
-        del new_conn["inherit_from"]
+    # and then we need to remove the `inherit_from` field from the child connection
+    print(f"Removing `inherit_from` from {conn['id']}\n")
+    del conn["inherit_from"]
+    return conn
 
-    # and finally, we add the connection to the full connections dict
-    full_connections.append(new_conn)
+def handle_inheritance(id):
+    """Recursively handle inheritance by traversing the inheritance order"""
+    if "inherit_from" in connections[id]:
+        parent = connections[id]["inherit_from"]
+        print(f"Connection {id} inherits from {parent}")
+        handle_inheritance(parent)
+        return inherit(id, parent)
+    return connections[id]
+
+for id in connections:
+    connections[id] = handle_inheritance(id)
 
 print("Removing non-visible connections...")
 
-full_visible_connections = []
-for connection in full_connections:
+visible_connections = []
+for connection in connections.values():
     if connection.get("visible", True):
-        full_visible_connections.append(connection)
+        visible_connections.append(connection)
 
 print("Done removing non-visible connections.\n")
 
 request_body = {
     "ref": sha,  # Misnamed in API, this is actually the commit sha
-    "connectionTypes": full_visible_connections,
+    "connectionTypes": visible_connections,
 }
 
 target_file = f"{environment}-connection-types-request-body.json"
