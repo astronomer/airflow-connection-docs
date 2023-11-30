@@ -1,7 +1,7 @@
 id: azure_wasb_managed_identity
 visible: true
 inherit_from: azure_managed_identity
-connection_name: WASB
+connection_name: Azure WASB
 method_name: Managed Identity (requires provider v8.2+)
 +parameters:
   - airflow_param_name: host
