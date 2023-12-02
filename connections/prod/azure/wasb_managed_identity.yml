@@ -9,6 +9,6 @@ method_name: Managed Identity (requires provider v8.2+)
     type: str
     is_required: true
     is_secret: false
-    is_in_extra: true
+    is_in_extra: false
     description: The account URL for Azure Blob Storage
     example: storageaccount.blob.core.windows.net
