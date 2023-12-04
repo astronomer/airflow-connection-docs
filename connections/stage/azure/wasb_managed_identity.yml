@@ -4,11 +4,11 @@ inherit_from: azure_managed_identity
 connection_name: WASB
 method_name: Managed Identity (requires provider v8.2+)
 +parameters:
-  - airflow_param_name: host
-    friendly_name: Blob Storage Host
+  - airflow_param_name: login
+    friendly_name: Blob Storage Account Name
     type: str
     is_required: true
     is_secret: false
     is_in_extra: false
-    description: The account URL for Azure Blob Storage
-    example: storageaccount.blob.core.windows.net
+    description: The Azure Blob Storage Account
+    example: storageaccount
