@@ -1,0 +1,13 @@
+id: weaviate_token
+visible: true
+inherit_from: weaviate_base
+method_name: API Key
++parameters:
+  - airflow_param_name: api_key
+    friendly_name: API Key
+    type: str
+    is_required: true
+    is_secret: true
+    is_in_extra: true
+    description: Weaviate API Key
+    example: abc123
