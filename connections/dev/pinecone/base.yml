@@ -1,0 +1,46 @@
+id: pinecone_base
+connection_type: pinecone
+visible: true
+connection_name: Pinecone
+description: Pinecone is a hosted vector database
+package: apache-airflow-providers-pinecone
+parameters:
+  # host
+  - airflow_param_name: host
+    friendly_name: Host
+    type: str
+    is_required: false
+    is_secret: false
+    description: The URL of the Pinecone cluster
+    example: https://controller.your_env.pinecone.io
+  
+  # Password
+  - airflow_param_name: password
+    friendly_name: Pinecone API key
+    type: str
+    is_required: true
+    is_secret: true
+    is_in_extra: false
+    description: Pinecone API key
+    example: my_password
+
+  # Environment
+  - airflow_param_name: login
+    friendly_name: Pinecone Environment
+    is_in_extra: false
+    type: str
+    is_required: false
+    is_secret: false
+    description: Environment name
+    example: my_env
+
+  # project
+  - airflow_param_name: project_id
+    friendly_name: Project ID
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: true
+    description: Pinecone project ID
+    example: my_project
+  
