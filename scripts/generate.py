@@ -33,8 +33,8 @@ else:
 connections = {}
 connections_dir = Path(f"connections/{environment}")
 
-# parse all .yml files in the connections directory and store them in `connections`
-for path in connections_dir.glob("**/*.yml"):
+# parse all .yml and .yaml files in the connections directory and store them in `connections`
+for path in connections_dir.glob("**/*.y*ml"):
     print(f"Loading connection from {path}")
     with open(path, mode="r", encoding="utf-8") as f:
         connection = yaml.safe_load(f)
@@ -57,6 +57,7 @@ for path in connections_dir.glob("**/*.yml"):
         connections[connection["id"]] = connection
 
 print(f"Loaded {len(connections)} connections. Checking for inheritance...\n")
+
 
 # then we need to deal with inheritance
 def inherit(id, parent_id):
@@ -121,6 +122,7 @@ def inherit(id, parent_id):
     del conn["inherit_from"]
     return conn
 
+
 def handle_inheritance(id):
     """Recursively handle inheritance by traversing the inheritance order"""
     if "inherit_from" in connections[id]:
@@ -129,6 +131,7 @@ def handle_inheritance(id):
         handle_inheritance(parent)
         return inherit(id, parent)
     return connections[id]
+
 
 for id in connections:
     connections[id] = handle_inheritance(id)
