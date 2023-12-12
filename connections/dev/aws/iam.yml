@@ -1,7 +1,7 @@
 id: aws_iam
 connection_type: aws
 visible: true
-connection_name: AWS
+connection_name: AWS (Assume Role)
 description: Configure a connection to AWS Services using an existing IAM Role.
 package: apache-airflow-providers-amazon
 parameters:
