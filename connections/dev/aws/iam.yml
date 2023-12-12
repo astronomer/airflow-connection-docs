@@ -5,9 +5,9 @@ connection_name: AWS
 description: Configure a connection to AWS Services using an existing IAM Role.
 package: apache-airflow-providers-amazon
 parameters:
-  - airflow_param_name: role
-    friendly_name: IAM Role
-    description: AWS IAM Role
+  - airflow_param_name: role_arn
+    friendly_name: IAM Role ARN
+    description: AWS IAM Role ARN
     example: arn:///12345:us-east-1:::xyz/someonegivemeagoodexample
     type: str
     is_in_extra: true
