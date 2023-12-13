@@ -1,0 +1,67 @@
+id: opensearch_base
+connection_type: opensearch
+visible: true
+connection_name: Opensearch
+description: Opensearch is an opensource search engine
+package: apache-airflow-providers-opensearch
+parameters:
+
+  #Host
+  - airflow_param_name: host
+    friendly_name: Host
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: false
+    description: Opensearch instance hostname
+    example: localhost
+  
+  # Password
+  - airflow_param_name: password
+    friendly_name: Password
+    type: str
+    is_required: true
+    is_secret: true
+    is_in_extra: false
+    description: Password
+    example: admin
+
+  # Login
+  - airflow_param_name: login
+    friendly_name: Username
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: false
+    description: Username
+    example: admin
+
+  # port
+  - airflow_param_name: port
+    friendly_name: Port Numbrer
+    type: int
+    is_required: true
+    is_secret: false
+    is_in_extra: false
+    description: Port number
+    example: 9200
+  
+  # use_ssl
+  - airflow_param_name: use_ssl
+    friendly_name: Use SSL for connection?
+    type: bool
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+    description: Use SSL for connection?
+    example: True
+  
+  # verify_certs
+  - airflow_param_name: verify_certs
+    friendly_name: Verify certs for connection?
+    type: bool
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+    description: Verify certs for connection?
+    example: True

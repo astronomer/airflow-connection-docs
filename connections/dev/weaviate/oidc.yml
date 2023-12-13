@@ -1,7 +1,7 @@
 id: weaviate_oidc
 visible: true
 inherit_from: weaviate_base
-method_name: OIDC
+method_name: Weaviate OIDC
 +parameters:
   - airflow_param_name: login
     friendly_name: OIDC Username
@@ -20,3 +20,12 @@ method_name: OIDC
     is_in_extra: false
     description: Password for the OIDC user.
     example: my_password
+  
+  - airflow_param_name: oidc_scope
+    friendly_name: OIDC Scope
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: true
+    description: OIDC Scope
+    example: my_scope

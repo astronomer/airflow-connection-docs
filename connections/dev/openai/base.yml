@@ -1,0 +1,25 @@
+id: openai_base
+connection_type: openai
+visible: true
+connection_name: OpenAI
+description: OpenAI is an AI service provider
+package: apache-airflow-providers-openai
+parameters:
+
+  - airflow_param_name: host
+    friendly_name: Host
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: false
+    description: OpenAI endpoint url
+    example: https://example-endpoint.openai.azure.com
+  
+  - airflow_param_name: password
+    friendly_name: API Key
+    type: str
+    is_required: true
+    is_secret: true
+    is_in_extra: false
+    description: API Key
+    example: sk-xxxxxxxxx

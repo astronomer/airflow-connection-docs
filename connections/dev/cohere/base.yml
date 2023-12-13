@@ -1,0 +1,25 @@
+id: cohere_base
+connection_type: cohere
+visible: true
+connection_name: Cohere
+description: Cohere is an AI service provider
+package: apache-airflow-providers-cohere
+parameters:
+
+  - airflow_param_name: host
+    friendly_name: Cohere API URL
+    type: str
+    is_required: false
+    is_secret: false
+    is_in_extra: false
+    description: Alternate Cohere API URL
+    example: https://localhost:8050
+  
+  - airflow_param_name: password
+    friendly_name: API Key
+    type: str
+    is_required: true
+    is_secret: true
+    is_in_extra: false
+    description: API Key
+    example: my_token

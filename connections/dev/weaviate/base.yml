@@ -5,7 +5,7 @@ connection_name: Weaviate
 description: Weaviate is an opensource vector database with both hosted and containerized offerings for local development.
 package: apache-airflow-providers-weaviate
 parameters:
-  # host
+
   - airflow_param_name: host
     friendly_name: Host
     type: str
@@ -14,7 +14,6 @@ parameters:
     description: The URL of the Weaviate cluster
     example: http://my-cluster.weaviate.network
 
-  # additional_headers
   - airflow_param_name: additional_headers
     friendly_name: Connection Headers
     is_in_extra: true
