@@ -9,7 +9,7 @@ parameters:
   - airflow_param_name: role_arn
     friendly_name: IAM Role ARN
     description: AWS IAM Role ARN
-    example: arn:aws:iam::123467890:role/workload-dentity-role-name-829
+    example: arn:aws:iam::123467890:role/workload-identity-role-name-123
     type: str
     is_in_extra: true
     is_required: true
