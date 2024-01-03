@@ -3,7 +3,7 @@ connection_type: aws
 visible: true
 connection_name: AWS
 method_name: Assume Role
-description: Configure a connection to AWS Services using an existing IAM Role.
+description: Configure a connection to AWS Services using an existing IAM Role. Ensure your Astro Deployment's Workload Identity has been authorized to assume this role via its trust relationship.
 package: apache-airflow-providers-amazon
 parameters:
   - airflow_param_name: role_arn
