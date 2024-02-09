@@ -5,19 +5,19 @@ connection_name: AWS
 description: Configure a connection to AWS.
 package: apache-airflow-providers-amazon
 parameters:
-  - airflow_param_name: aws_access_key_id
+  - airflow_param_name: login
     friendly_name: Access Key ID
     description: AWS Access Key ID
     example: AKIAIOSFODNN7EXAMPLE
     type: str
-    is_in_extra: true
+    is_in_extra: false
     is_required: true
     is_secret: false
-  - airflow_param_name: aws_secret_access_key
+  - airflow_param_name: password
     friendly_name: Secret Access Key
     description: AWS Secret Access Key
     example: wJalrXUtnFEMI%2FK7MDENGbPxRfiCYEXAMPLEKEY
     type: str
-    is_in_extra: true
+    is_in_extra: false
     is_required: true
     is_secret: true
