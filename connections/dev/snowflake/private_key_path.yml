@@ -1,4 +1,4 @@
-id: snowflake_private_key_path
+id: snowflake_private_key
 visible: true
 inherit_from: snowflake_base
 method_name: Private Key (Path)
