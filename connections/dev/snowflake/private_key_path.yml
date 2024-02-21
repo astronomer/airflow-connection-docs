@@ -9,7 +9,7 @@ method_name: Private Key (Path)
     type: str
     is_required: false
     is_secret: true
-    description: The passphrase to use for authenticating against Snowflake.
+    description: The passphrase for decrypting the private key.
     example: my_private_key_passphrase
 
   # private_key_path
