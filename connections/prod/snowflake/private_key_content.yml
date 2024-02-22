@@ -1,0 +1,26 @@
+id: snowflake_private_key_content
+visible: true
+inherit_from: snowflake_base
+method_name: Private Key (Content)
++parameters:
+  # password
+  - airflow_param_name: password
+    friendly_name: Private Key Passphrase
+    type: str
+    is_required: false
+    is_secret: true
+    description: The passphrase for decrypting the private key.
+    example: my_private_key_passphrase
+
+  # private_key_content
+  - airflow_param_name: private_key_content
+    friendly_name: Private Key Content
+    type: str
+    is_required: true
+    is_in_extra: true
+    is_secret: true
+    description: The content of the private key to use for authenticating against Snowflake.
+    example: |
+      -----BEGIN ENCRYPTED PRIVATE KEY-----
+      MIIE6T...
+      -----END ENCRYPTED PRIVATE KEY-----

@@ -1,0 +1,21 @@
+id: opsgenie_base
+connection_type: opsgenie
+visible: true
+connection_name: Opsgenie
+description: Configure a connection to Atlassian Opsgenie.
+package: apache-airflow-providers-opsgenie
+parameters:
+  - airflow_param_name: host
+    friendly_name: Domain
+    description: Defaults to https://api.opsgenie.com
+    example: https://api.opsgenie.com
+    type: str
+    is_required: false
+    is_secret: false
+  - airflow_param_name: password
+    friendly_name: Opsgenie API Key
+    description: Enter your Opsgenie API Key
+    example: opsgenie_api_key
+    type: str
+    is_required: true
+    is_secret: true

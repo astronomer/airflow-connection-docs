@@ -1,15 +1,15 @@
 id: snowflake_private_key
 visible: true
 inherit_from: snowflake_base
-method_name: Private Key
+method_name: Private Key (Path)
 +parameters:
   # password
   - airflow_param_name: password
     friendly_name: Private Key Passphrase
     type: str
-    is_required: true
+    is_required: false
     is_secret: true
-    description: The passphrase to use for authenticating against Snowflake.
+    description: The passphrase for decrypting the private key.
     example: my_private_key_passphrase
 
   # private_key_path
