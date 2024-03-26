@@ -1,0 +1,14 @@
+id: azure_adls_managed_identity
+visible: true
+inherit_from: azure_managed_identity
+connection_name: ADLS
+method_name: Managed Identity (requires provider v8.2+)
++parameters:
+  - airflow_param_name: host
+    friendly_name: ADLS Gen2 Account Name
+    type: str
+    is_required: true
+    is_secret: false
+    is_in_extra: false
+    description: ADLS Gen2 Account Name (same as the Azure Blob Storage Account)
+    example: storageaccount
