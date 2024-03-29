@@ -15,7 +15,7 @@ method_name: Private Key (Content)
   # private_key_content
   - airflow_param_name: private_key_content
     friendly_name: Private Key Content
-    type: str
+    type: longtext
     is_required: true
     is_in_extra: true
     is_secret: true
