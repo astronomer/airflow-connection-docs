@@ -9,18 +9,18 @@ jobs:
   restrict-job-to-devex-admins:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Validate Actor
-      id: validate
-      run: |
-        if [[ ! "iancmoritz jlaneve harels melugoyal" =~ "$ACTOR" ]]; then
-          echo "Error: $ACTOR is not allowed to run this action."
-          exit 1
-        fi
-      env:
-        ACTOR: ${{ github.actor }}
+      - name: Validate Actor
+        id: validate
+        run: |
+          if [[ ! "iancmoritz jlaneve melugoyal jeremybeard" =~ "$ACTOR" ]]; then
+            echo "Error: $ACTOR is not allowed to run this action."
+            exit 1
+          fi
+        env:
+          ACTOR: ${{ github.actor }}
 
   update-connection-types:
     needs: restrict-job-to-devex-admins
@@ -33,7 +33,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          cache: 'pip'
+          cache: "pip"
 
       - run: pip install -r scripts/requirements.txt
 
