@@ -5,26 +5,26 @@ connection_name: dbt Cloud
 description: Configure a connection to a dbt Cloud instance
 package: apache-airflow-providers-dbt-cloud
 parameters:
-  - airflow_param_name: api_token
+  - airflow_param_name: password
     friendly_name: API Token
-    description: The API token to use when authenticating to the dbt Cloud API
+    description: The API token to use when authenticating to the dbt Cloud API.
     type: str
     is_required: true
     is_secret: true
-    is_in_extra: true
-  - airflow_param_name: tenant
+    is_in_extra: false
+  - airflow_param_name: host
     friendly_name: Tenant
-    description: The Tenant name for your dbt Cloud environment. This is particularly useful when using a single-tenant dbt Cloud instance
+    description: The Tenant name for your dbt Cloud environment. This is particularly useful when using a single-tenant dbt Cloud instance.
     example: https://my-tenant.getdbt.com
     type: str
     is_required: false
     is_secret: false
-    is_in_extra: true
-  - airflow_param_name: account_id
+    is_in_extra: false
+  - airflow_param_name: login
     friendly_name: Account ID
-    description: Optional. If an Account ID is provided in the connection, you are not required to pass account_id to operators or hook methods
+    description: Optional. If an Account ID is provided in the connection, you are not required to pass account_id to operators or hook methods.
     example: 12345
     type: str
     is_required: false
     is_secret: false
-    is_in_extra: true
+    is_in_extra: false
