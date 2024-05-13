@@ -5,13 +5,13 @@ connection_name: dbt Cloud
 description: Configure a connection to a dbt Cloud instance
 package: apache-airflow-providers-dbt-cloud
 parameters:
-  - airflow_param_name: api_token
+  - airflow_param_name: password
     friendly_name: API Token
     description: The API token to use when authenticating to the dbt Cloud API
     type: str
     is_required: true
     is_secret: true
-    is_in_extra: true
+    is_in_extra: false
   - airflow_param_name: tenant
     friendly_name: Tenant
     description: The Tenant name for your dbt Cloud environment. This is particularly useful when using a single-tenant dbt Cloud instance
