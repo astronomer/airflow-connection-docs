@@ -26,6 +26,13 @@ parameters:
     type: str
     is_required: true
     is_secret: true
+  - airflow_param_name: port
+    friendly_name: Port
+    description: The port number of the database server
+    example: 1433
+    type: int
+    is_required: true
+    is_secret: false
   - airflow_param_name: schema
     friendly_name: Schema
     description: The schema to connect to the database server
